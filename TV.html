@@ -209,6 +209,9 @@
                     animationStatus.classList.remove('hide')
                     animationLoading.classList.add('hide');
                 }, animationLength);*/
+                self.setTimeout(()=>{
+                    modelViewer.pause();
+                }, animationLength);
             }
 
         }
