@@ -55,8 +55,9 @@
         <h2><b>AV</b></h2>
         <br />
         <br />
-        <audio autoplay>
-            <source src="../assets/sound/danchoi.mp3"" type="audio/mpeg">
+        <audio id="myAudio" loop>
+            <source src="./assets/sound/danchoi.mp3" type="audio/mpeg">
+
             Your browser does not support the audio element.
         </audio>
         <model-viewer id="model-viewer" 
@@ -71,7 +72,8 @@
         ar-scale="auto"
         >
             <div class="d-grid gap-2 col-1 mx-auto btnArea">
-                <button slot="hotspot-visor" data-position="0 1.75 0.35" data-normal="0 0 1"></button>
+              
+                <button type="button"id="audiobtn" style="background-image: url('./assets/button/play.png'); width :64px; height:64px;display:none " onclick="toggleAudio()"></button>
 
                 <button type="button" class="btn btn-danger hide"  id="animationBtn" onclick="animationPlay()"> 
 
@@ -112,12 +114,20 @@
           </div>
         <br />
         <div class="d-grid gap-2 col-8 mx-auto">
-        <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="activateAR_click()"> View in AR </button>        
+        <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="activateAR_click()"> View in AR </button>    
         </div>
         <br/>    <br/>
     </div>
     
     <script>
+        function toggleAudio() {
+            var audio = document.getElementById('myAudio');
+            if (audio.paused) {
+                audio.play()
+            } else {
+                audio.pause();
+            }
+        }
         function shareSNS_click() {
             const shareData = {
                 title: document.title,
@@ -154,9 +164,12 @@
         function activateAR_click() {
             var modelViewer = document.getElementById('model-viewer');
             modelViewer.activateAR();
-            
+            var x = document.getElementById("audiobtn");
+            x.style.display = "block";
             var sharesnsBtn = document.getElementById("sharesnsBtn");
             sharesnsBtn.classList.remove('hide');
+
+
         }
 
         var StatusAnimation = 'off';
