@@ -1,4 +1,4 @@
-<html>
+﻿<html>
     <head>
         <title>Web Model</title>
         <meta charset="utf-8">
@@ -55,6 +55,8 @@
         <h2><b>AV</b></h2>
         <br />
         <br />
+        <audio id="sound" src="../assets/sound/danchoi.mp3"></audio>
+
         <model-viewer id="model-viewer" 
         src="../assets/models/PL5_Black.glb" 
         ios-src="../assets/models/PL5_Black.usdz" 
@@ -121,7 +123,9 @@
                 navigator.share(shareData);
             }
         }
-
+        sound.addEventListener('timeupdate', () => {
+            modelViewer.currentTime = audio.currentTime;
+        });
         function modelChange() {
 
             var selectBox = document.getElementById("selectBox");
