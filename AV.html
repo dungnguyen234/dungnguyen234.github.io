@@ -55,8 +55,10 @@
         <h2><b>AV</b></h2>
         <br />
         <br />
-        <audio id="sound" src="../assets/sound/danchoi.mp3"></audio>
-
+        <audio controls autoplay>
+            <source src="../assets/sound/danchoi.mp3"" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
         <model-viewer id="model-viewer" 
         src="../assets/models/PL5_Black.glb" 
         ios-src="../assets/models/PL5_Black.usdz" 
@@ -115,7 +117,7 @@
         function shareSNS_click() {
             const shareData = {
                 title: document.title,
-                text: 'Hello World',
+                text: 'Xboom GO',
                 url: 'https://daum.net',
             };
 
@@ -123,9 +125,7 @@
                 navigator.share(shareData);
             }
         }
-        sound.addEventListener('timeupdate', () => {
-            modelViewer.currentTime = audio.currentTime;
-        });
+        
         function modelChange() {
 
             var selectBox = document.getElementById("selectBox");
