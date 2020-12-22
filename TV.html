@@ -191,34 +191,7 @@
                     animationLoading.classList.add('hide');
                 }, animationLength);
             }
-            else {
-                StatusAnimation = 'off'
-                BtnStatus = 'play'
-
-                animationBtn.classList.add('btn-danger');
-                animationBtn.classList.remove('btn-primary');
-                animationStatus.classList.add('hide')
-                animationLoading.classList.remove('hide');
-
-                const modelViewer = document.querySelector("model-viewer");
-                //modelViewer.animationName = "anim_Clip3";
-                modelViewer.animationName = "Animation";
-
-                console.log(modelViewer.animationName + " play");
-                const animationLength = 8500; // ms
-                modelViewer.play();
-
-                self.setTimeout(() => {
-                    modelViewer.pause();
-                    BtnStatus = 'wait';
-                    animationStatus.classList.remove('hide')
-                    animationLoading.classList.add('hide');
-                }, animationLength);
-                self.setTimeout(() => {
-                    modelViewer.pause();
-                }, animationLength);
-            }
-
+           
         }
     </script>
 </html>
