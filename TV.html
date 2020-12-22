@@ -77,12 +77,7 @@
             <div class="d-grid gap-2 mx-auto btnArea">
                 <button type="button" class="btn btn-success hide"  id="sharesnsBtn" onclick="shareSNS_click()"> 
                     <span class="glyphicon glyphicon-share" aria-hidden="true">Share</span>
-                </button>  
-                <button id="hotspotButton"
-                        slot="hotspot-one"
-                        data-position="..." data-normal="...">
-                    Play
-                </button>
+                </button>        
             </div>
         </model-viewer>
       
@@ -112,12 +107,6 @@
     </div>
     
     <script>
-        hotspotButton.addEventListener('click', () => {
-            if (modelViewer.paused) {
-                modelViewer.play();
-            } else {
-                modelViewer.pause();
-            }
         function shareSNS_click() {
             const shareData = {
                 title: document.title,
