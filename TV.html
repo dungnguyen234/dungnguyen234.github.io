@@ -77,7 +77,12 @@
             <div class="d-grid gap-2 mx-auto btnArea">
                 <button type="button" class="btn btn-success hide"  id="sharesnsBtn" onclick="shareSNS_click()"> 
                     <span class="glyphicon glyphicon-share" aria-hidden="true">Share</span>
-                </button>        
+                </button>  
+                <button id="hotspotButton"
+                        slot="hotspot-one"
+                        data-position="..." data-normal="...">
+                    Play
+                </button>
             </div>
         </model-viewer>
       
@@ -118,70 +123,7 @@
                 navigator.share(shareData);
             }
         }
-        function animationPlay() {
-            if (BtnStatus == 'play') return;
-            var modelViewer = document.querySelector("model-viewer")
-            console.log(modelViewer.availableAnimations);
-            //console.log('duration: ' + modelViewer.duration);
-
-            var animationStatus = document.getElementById("animationStatus");
-            var animationBtn = document.getElementById("animationBtn");
-            var animationLoading = document.getElementById("loadingAnimation");
-
-            if (StatusAnimation == 'off') {
-                StatusAnimation = 'on'
-                BtnStatus = 'play'
-
-                animationBtn.classList.add('btn-primary');
-                animationBtn.classList.remove('btn-danger');
-                animationStatus.classList.add('hide')
-                animationLoading.classList.remove('hide');
-
-                const modelViewer = document.querySelector("model-viewer");
-                modelViewer.animationName = "Animation";
-                modelViewer.currentTime = 0;
-                console.log(modelViewer.animationName + " play");
-
-                const animationLength = 9930; // ms
-                modelViewer.play();
-                self.setTimeout(() => { modelViewer.pause(); }, animationLength);
-
-                self.setTimeout(()=>{
-                modelViewer.pause();
-                BtnStatus = 'wait';
-                 animationStatus.classList.remove('hide')
-                animationLoading.classList.add('hide');
-                 }, animationLength);
-            }
-            else {
-                StatusAnimation = 'off'
-                BtnStatus = 'play'
-
-                animationBtn.classList.add('btn-danger');
-                animationBtn.classList.remove('btn-primary');
-                animationStatus.classList.add('hide')
-                animationLoading.classList.remove('hide');
-
-                const modelViewer = document.querySelector("model-viewer");
-                //modelViewer.animationName = "anim_Clip3";
-                modelViewer.animationName = "Animation";
-
-                console.log(modelViewer.animationName + " play");
-                const animationLength = 8500; // ms
-                modelViewer.play();
-
-                self.setTimeout(()=>{
-                    modelViewer.pause();
-                    BtnStatus = 'wait';
-                    animationStatus.classList.remove('hide')
-                    animationLoading.classList.add('hide');
-                }, animationLength);*/
-                self.setTimeout(() => {
-                    modelViewer.pause();
-                }, animationLength);
-            }
-
-        }
+        
 
         const modelViewer = document.querySelector("model-viewer");
         modelViewer.addEventListener('play', () => {
@@ -219,7 +161,70 @@
 
         var StatusAnimation = 'off';
         var BtnStatus = 'wait';
-     
+        function animationPlay() {
+            if (BtnStatus == 'play') return;
+            var modelViewer = document.querySelector("model-viewer")
+            console.log(modelViewer.availableAnimations);
+            //console.log('duration: ' + modelViewer.duration);
+
+            var animationStatus = document.getElementById("animationStatus");
+            var animationBtn = document.getElementById("animationBtn");
+            var animationLoading = document.getElementById("loadingAnimation");
+
+            if (StatusAnimation == 'off') {
+                StatusAnimation = 'on'
+                BtnStatus = 'play'
+
+                animationBtn.classList.add('btn-primary');
+                animationBtn.classList.remove('btn-danger');
+                animationStatus.classList.add('hide')
+                animationLoading.classList.remove('hide');
+
+                const modelViewer = document.querySelector("model-viewer");
+                modelViewer.animationName = "Animation";
+                modelViewer.currentTime = 0;
+                console.log(modelViewer.animationName + " play");
+
+                const animationLength = 9930; // ms
+                modelViewer.play();
+                self.setTimeout(() => { modelViewer.pause(); }, animationLength);
+
+                self.setTimeout(() => {
+                    modelViewer.pause();
+                    BtnStatus = 'wait';
+                    animationStatus.classList.remove('hide')
+                    animationLoading.classList.add('hide');
+                }, animationLength);
+            }
+            else {
+                StatusAnimation = 'off'
+                BtnStatus = 'play'
+
+                animationBtn.classList.add('btn-danger');
+                animationBtn.classList.remove('btn-primary');
+                animationStatus.classList.add('hide')
+                animationLoading.classList.remove('hide');
+
+                const modelViewer = document.querySelector("model-viewer");
+                //modelViewer.animationName = "anim_Clip3";
+                modelViewer.animationName = "Animation";
+
+                console.log(modelViewer.animationName + " play");
+                const animationLength = 8500; // ms
+                modelViewer.play();
+
+                self.setTimeout(() => {
+                    modelViewer.pause();
+                    BtnStatus = 'wait';
+                    animationStatus.classList.remove('hide')
+                    animationLoading.classList.add('hide');
+                }, animationLength);* /
+                self.setTimeout(() => {
+                    modelViewer.pause();
+                }, animationLength);
+            }
+
+        }
     </script>
 </html>
 
