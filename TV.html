@@ -146,12 +146,12 @@
                 modelViewer.play();
                 self.setTimeout(() => { modelViewer.pause(); }, animationLength);
 
-                //self.setTimeout(()=>{
-                //modelViewer.pause();
-                //BtnStatus = 'wait';
-                // animationStatus.classList.remove('hide')
-                //animationLoading.classList.add('hide');
-                // }, animationLength);
+                self.setTimeout(()=>{
+                modelViewer.pause();
+                BtnStatus = 'wait';
+                 animationStatus.classList.remove('hide')
+                animationLoading.classList.add('hide');
+                 }, animationLength);
             }
             else {
                 StatusAnimation = 'off'
@@ -170,7 +170,7 @@
                 const animationLength = 8500; // ms
                 modelViewer.play();
 
-                /*self.setTimeout(()=>{
+                self.setTimeout(()=>{
                     modelViewer.pause();
                     BtnStatus = 'wait';
                     animationStatus.classList.remove('hide')
