@@ -112,6 +112,12 @@
     </div>
     
     <script>
+        hotspotButton.addEventListener('click', () => {
+            if (modelViewer.paused) {
+                modelViewer.play();
+            } else {
+                modelViewer.pause();
+            }
         function shareSNS_click() {
             const shareData = {
                 title: document.title,
