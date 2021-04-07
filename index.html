@@ -1,256 +1,248 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Basketball Game</title>
-		<style>
-			body {
-				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			}
 
-			#overlay {
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				padding: 1em;
-				
-				display: flex;
-				flex-direction: column;
-				justify-items: flex-start;
-				align-items: flex-start;
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>AR paper glass</title>
+<!-- include three.js library -->
+<script src='js/three.js'></script>
+<script src='js/OBJLoader.js'></script>
+<script src='js/MTLLoader.js'></script>
+<!-- include tween.js library -->
+<script src="js/tween.umd.js"></script>
+<!-- include jsartookit -->
+<script src="jsartoolkit5/artoolkit.min.js"></script>
+<script src="jsartoolkit5/artoolkit.api.js"></script>
+<!-- include threex.artoolkit -->
+<script src="threex/threex-artoolkitsource.js"></script>
+<script src="threex/threex-artoolkitcontext.js"></script>
+<script src="threex/threex-arbasecontrols.js"></script>
+<script src="threex/threex-armarkercontrols.js"></script>
+</head>
 
-				pointer-events: none;
-				user-select: none;
-			}
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 
-			button {
-				appearance: none;
-				background: rgba(153, 135, 135, 0.267);
-				color: white;
-				border: 4px solid;
-				padding: 0.5em;
-				font-size: 1.5em;
-				border-radius: 2em;
-				user-select: none;
-				pointer-events: auto;
-				align-self: center;
-			}
+<!--
+Example based on the AR.js library and examples created by Jerome Etienne: https://github.com/jeromeetienne/AR.js/
+-->
 
-			h1 {
-				font-size: 1.5em;
-				background: rgba(153, 135, 135, 0.267);
-				color: white;
-			}
+<script>
+var scene, camera, renderer, clock, deltaTime, totalTime;
 
-			.overlay-content {
-				flex-grow: 1;
-			}
+var arToolkitSource, arToolkitContext;
 
-			p {
-				font-size: 1.5em;
-				background: rgba(153, 135, 135, 0.267);
-				color: white;
-			}
+var markerRoot, mainContainer;
 
-			#ar-instructions, #inline-instructions {
-				display: none;
-			}
+var audioContent = [];
 
-			body.inline #inline-instructions {
-				display: contents;
-			}
+initialize();
+animate();
 
-			body.playing #ar-instructions,
-			body.ar-preparing #ar-instructions {
-				display: contents;
-			}
+function initialize() {
+scene = new THREE.Scene();
 
-			body.playing #go-button, 
-			body.playing #instructions {
-				visibility: hidden;
-			}
+let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
+scene.add(ambientLight);
 
-		</style>
-		<script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-		<script src="ar-components.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
-	</head>
-	<body class="inline">
-		<a-scene webxr="optionalFeatures: hit-test, dom-overlay; overlayElement:#overlay;" physics="debug: false">
-			<a-sphere id="ball" dynamic-body radius="0.1" color="orange" position="0.1 2.36 -1.5"></a-sphere>
-			<a-entity id="hoop" rotation="90 0 0" position="0 2 -1.8" hide-in-ar-mode> 
-				<a-torus scale="0.6 0.6 0.6" position="0 0.173 -0.1" color="#43A367" radius="0.25" radius-tubular="0.005"></a-torus>
-				<a-torus scale="0.6 0.6 0.6" static-body="shape: mesh;" position="0 0.173 -0.1" visible="false" radius="0.27" radius-tubular="0.02" material="" geometry="radius: 0.29; segmentsRadial: 5; segmentsTubular: 12"></a-torus>
-				<a-plane
-					scale="0.6 0.6 0.6"
-					position="0 0 -0.3"
-					rotation="-90 0 0"
-					width="0.9"
-					height="0.9"
-					material="transparent: true; side: double;"
-					src="./backboard.png"
-					static-body
-				></a-plane>
-				<a-plane scale="0.6 0.6 0.6" position="0 0 1.12355" rotation="-90 0 0" width="2" height="3" static-body geometry="height: 4.37" visible="false"></a-plane>
-				<a-cone scale="0.6 0.6 0.6" position="0 0.173 -0.010" color="tomato" radius-bottom="0.25" radius-top="0.3" material="side: double; opacity:0.5; transparent: true;" geometry="height: 0.29; openEnded: true" rotation="90 0 0"></a-cone>
-			</a-entity>
-			<a-entity ar-hit-test="doHitTest:false" visible="false">
-				<a-plane
-					rotation="-90 0 0"
-					width="0.2"
-					height="0.2"
-					src="./arrow.png"
-					material="transparent:true;"
-				></a-plane>
-			</a-entity>
-			<a-sky color="skyblue" hide-in-ar-mode></a-sky>
-			<a-plane
-				rotation="-90 0 0"
-				width="20"
-				height="20"
-				color="#43A367"
-				static-body
-				hide-in-ar-mode
-			></a-plane>
-			<a-camera>
-				<a-entity
-					id="text"
-					text="value: Hello World; align: left; width: 0.1;"
-					position="0 0 -0.17;"
-					visible="false"
-				>
-				</a-entity>
-			</a-camera>
-		</a-scene>
-		<div id="overlay" class="container">
-			<div id="ar-instructions">
-				<h1>Welcome To Basketball</h1>
-				<section class="overlay-content">
-					<p id="instructions">Place the basket along a wall</p>
-				</section>
-				<div style="display: flex; justify-content: space-between; align-self: stretch;">
-					<button id="go-button">Ready to Play!</button>
-					<button id="exit-button">Stop AR</button>
-				</div>
-			</div>
-			<div id="inline-instructions">
-				<h1>Welcome To Basketball</h1>
-				<section class="overlay-content">
-					<p>Enter AR to Start Playing</p>
-				</section>
-			</div>
-		</div>
-		<script>
-			const reticle = document.querySelector("[ar-hit-test]");
-			const hoop = document.getElementById('hoop');
-			const instructions = document.getElementById('instructions');
-			const ball = document.getElementById('ball');
-			const button = document.getElementById('go-button');
-			const exit = document.getElementById('exit-button');
-			const upVector = new THREE.Vector3(0, 1, 0);
-			const tempVector = new THREE.Vector3();
-			const tempQuaternion = new THREE.Quaternion();
-			const scene = document.querySelector('a-scene');
+camera = new THREE.Camera();
+scene.add(camera);
 
-			function hasDomOverlay(session) {
-				if (!session.domOverlayState) {
-					// DOM Overlay is not supported
-					return false;
-				}
+renderer = new THREE.WebGLRenderer({
+antialias: true,
+alpha: true
+});
+renderer.setClearColor(new THREE.Color('lightgrey'), 0)
+renderer.setSize(640, 480);
+renderer.domElement.style.position = 'absolute'
+renderer.domElement.style.top = '0px'
+renderer.domElement.style.left = '0px'
+document.body.appendChild(renderer.domElement);
 
-				if (!session.domOverlayState.type) {
-					// DOM Overlay is not in use
-					return false;
-				}
+clock = new THREE.Clock();
+deltaTime = 0;
+totalTime = 0;
 
-				return true;
-			}
+////////////////////////////////////////////////////////////
+// setup arToolkitSource
+////////////////////////////////////////////////////////////
 
-			function positionHoop() {
-				hoop.setAttribute("position", reticle.getAttribute("position"));
-				hoop.setAttribute("visible", true);
-				tempVector.set(0, 0 ,-1);
-				tempVector.applyQuaternion(reticle.object3D.quaternion);
-				tempQuaternion.setFromUnitVectors(tempVector, upVector);
-				hoop.object3D.quaternion.multiplyQuaternions(tempQuaternion, reticle.object3D.quaternion);
-			};
+arToolkitSource = new THREEx.ArToolkitSource({
+sourceType: 'webcam',
+});
 
-			exit.addEventListener('click', function () {
-				scene.xrSession.end();
-			});
+function onResize() {
+arToolkitSource.onResize()
+arToolkitSource.copySizeTo(renderer.domElement)
+if (arToolkitContext.arController !== null) {
+arToolkitSource.copySizeTo(arToolkitContext.arController.canvas)
+}
+}
 
-			scene.addEventListener("enter-vr", () => {
-				const domOverlay = hasDomOverlay(scene.xrSession);
-				document.getElementById('text').setAttribute('text', 'value', 'Overlay: ' + domOverlay);
-				document.body.classList.remove("inline");
-				if (scene.is("ar-mode")) {
-					document.body.classList.add("ar-preparing");
-					reticle.setAttribute('ar-hit-test', 'doHitTest:true');
-					reticle.setAttribute('visible', 'true');
-				} else {
-					document.body.classList.add("playing");
-					reticle.setAttribute('ar-hit-test', 'doHitTest:false');
-					reticle.setAttribute('visible', 'false');
-				}
-			});
+arToolkitSource.init(function onReady() {
+onResize()
+});
 
-			scene.addEventListener("exit-vr", () => {
-				document.body.classList.add("inline");
-				document.body.classList.remove("playing");
-				document.body.classList.remove("ar-preparing");
-				reticle.setAttribute('ar-hit-test', 'doHitTest:false');
-				reticle.setAttribute('visible', 'false');
-			});
+// handle resize event
+window.addEventListener('resize', function () {
+onResize()
+});
 
-			reticle.addEventListener('select', function (e) {
-				const domOverlay = hasDomOverlay(scene.xrSession);
-				if (document.body.classList.contains("playing")) {
-					const pose = e.detail.pose;
-					ball.body.position.copy(pose.transform.position);
-					// ball.body.position.y += 0.2;
-					tempVector.set(0, 0 ,-5);
-					tempVector.applyQuaternion(pose.transform.orientation);
-					ball.body.velocity.copy(tempVector);
-					return;
-				}
+////////////////////////////////////////////////////////////
+// setup arToolkitContext
+////////////////////////////////////////////////////////////
 
-				if (domOverlay) {
-					setTimeout(() => {
-						if (document.body.classList.contains("playing")) {
-							return;
-						} else {
-							positionHoop();
-						}
-					}, 50);
-				} else {
-					if (document.body.classList.contains("playing")) {
-						return;
-					} else {
-						if (this.components["ar-hit-test"].hasFoundAPose) {
-							positionHoop();
-							readyToStartPlay(e);
-						}
-					}
-				}
-			});
+// create atToolkitContext
+arToolkitContext = new THREEx.ArToolkitContext({
+cameraParametersUrl: 'data/camera_para.dat',
+detectionMode: 'mono'
+});
 
-			function readyToStartPlay(e) {
-				e.preventDefault();
-				if (hoop.getAttribute("visible") === false) {
-					positionHoop();
-				}
-				if (document.body.classList.contains("ar-preparing")) {
-					document.body.classList.remove("ar-preparing");
-					document.body.classList.add("playing");
-					reticle.setAttribute('ar-hit-test', 'doHitTest:false');
-					reticle.setAttribute('visible', 'false');
-					return;
-				}
-			}
+// copy projection matrix to camera when initialization complete
+arToolkitContext.init(function onCompleted() {
+camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+});
 
-			button.addEventListener('mousedown', readyToStartPlay);
-			button.addEventListener('touchstart', readyToStartPlay);
-		</script>
-	</body>
+////////////////////////////////////////////////////////////
+// setup markerRoots
+////////////////////////////////////////////////////////////
+
+// CUSTOM PART
+mainContainer = new THREE.Group();
+
+const patternNames = ["pattern-qrcode"];
+const modes = ["model"];
+const modelFiles = ["Butterfly"];
+const imageFiles = [""];
+const videoFiles = [""];
+const audioFiles = [""];
+const repeatOptions = [""];
+
+const markerRoots = [];
+for (let i = 0; i < 1; i++) {
+markerRoots[i] = new THREE.Group();
+}
+
+for (let i = 0; i < 1; i++) {
+mainContainer.add(markerRoots[i]);
+let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoots[i], {
+type: 'pattern', patternUrl: `${patternNames[i]}.patt`,
+})
+
+switch (modes[i]) {
+case 'model':
+function onProgress(xhr) { console.log((xhr.loaded / xhr.total * 100) + '% loaded'); }
+function onError(xhr) { console.log('An error happened'); }
+
+new THREE.MTLLoader()
+.load(`${modelFiles[i]}.mtl`, function (materials) {
+materials.preload();
+new THREE.OBJLoader()
+.setMaterials(materials)
+.load(`${modelFiles[i]}.obj`, function (group) {
+let mesh0 = group.children[0];
+mesh0.material.side = THREE.DoubleSide;
+mesh0.scale.set(0.05, 0.05, 0.05);
+
+mesh0.rotation.set(Math.PI / -2, 0, 0);
+
+markerRoots[i].add(mesh0);
+
+}, onProgress, onError);
+});
+break;
+case 'image':
+let geometry1 = new THREE.PlaneBufferGeometry(1, 1, 4, 4);
+let loader = new THREE.TextureLoader();
+let texture = loader.load(`${imageFiles[i]}.png`, render);
+let material1 = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+
+mesh1 = new THREE.Mesh(geometry1, material1);
+mesh1.rotation.x = -Math.PI / 2;
+markerRoots[i].add(mesh1);
+break;
+case 'video':
+let geometry2 = new THREE.PlaneBufferGeometry(2, 2, 4, 4);
+
+let video = document.createElement('video');
+video.src = `${videoFiles[i]}.mp4`;
+if (repeatOptions[i]) {
+video.addEventListener('ended', () => {
+video.play();
+})
+}
+audioContent.push(video);
+let texture2 = new THREE.VideoTexture(video);
+texture2.minFilter = THREE.LinearFilter;
+texture2.magFilter = THREE.LinearFilter;
+texture2.format = THREE.RGBFormat;
+let material2 = new THREE.MeshBasicMaterial({ map: texture2 });
+
+mesh2 = new THREE.Mesh(geometry2, material2);
+mesh2.rotation.x = -Math.PI / 2;
+
+markerRoots[i].add(mesh2);
+break;
+default:
+let mesh = new THREE.Mesh(
+new THREE.CubeGeometry(1, 1, 1),
+new THREE.MeshBasicMaterial({ color: 'red', transparent: true, opacity: 0.5 })
+);
+mesh.position.y = 0.5;
+markerRoots[i].add(mesh);
+break;
+}
+
+
+if (audioFiles[i]) {
+const listener = new THREE.AudioListener();
+camera.add(listener);
+// create a global audio source
+const sound = new THREE.Audio(listener);
+audioContent.push(sound);
+// load a sound and set it as the Audio object's buffer
+const audioLoader = new THREE.AudioLoader();
+audioLoader.load(`${audioFiles[i]}.mp3`, function (buffer) {
+sound.setBuffer(buffer);
+if (repeatOptions[i]) {
+sound.setLoop(true);
+}
+sound.setVolume(0.5);
+});
+}
+}
+
+scene.add(mainContainer);
+}
+
+function update() {
+// update artoolkit on every frame
+if (arToolkitSource.ready !== false) {
+arToolkitContext.update(arToolkitSource.domElement);
+}
+}
+
+function render() {
+renderer.render(scene, camera);
+}
+
+
+function animate(time) {
+requestAnimationFrame(animate);
+deltaTime = clock.getDelta();
+totalTime += deltaTime;
+update();
+render();
+}
+
+window.onload = () => {
+setTimeout(() => {
+for (let i = 0; i < audioContent.length; i++) {
+audioContent[i].play();
+}
+}, 100);
+}
+
+</script>
+
+</body>
+
 </html>
