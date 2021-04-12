@@ -1,47 +1,59 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>3D Character</title>
-    <link href="styles/main.css" rel="stylesheet" />
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/3.1.0/aframe/build/aframe-ar.js"></script>
-  </head>
-  <body>
-    <div class="buttons">
-      <button class="switch-button">Next</button>
-    </div>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Image based tracking AR.js demo</title>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
 
+<style>
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
+
+<!-- rawgithack development URL -->
+<script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
+
+<body style='margin : 0px; overflow: hidden;'>
+   <!-- minimal loader shown until image descriptors are loaded -->
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
     <a-scene
-      renderer="antialias: auto;"
-      tune-renderer
-      embedded
-      arjs
-      vr-mode-ui="enabled: false"
-    >
-      <a-assets>
-        <a-asset-item id="bot_dance" src="models/multi.glb"></a-asset-item>
-      </a-assets>
-      <a-marker id="animated-marker" preset="hiro">
-        <a-entity
-          id="bot"
-          gltf-model="#bot_dance"
-          position="0 0.8 -1"
-          scale="1 1 1"
-          animation-mixer="clip: CatWalk"
-          modify-materials
-        ></a-entity>
-        <a-light type="ambient" color="#ffffff" intensity="1"></a-light>
-        <a-light
-          type="directional"
-          color="#ffffff"
-          position="0 400 350"
-          intensity="2"
-        ></a-light>
-        <a-camera></a-camera>
-      </a-marker>
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+
+        <!-- use rawgithack to retrieve the correct url for nft marker (see 'trex' below) -->
+        <a-nft
+            type='nft' url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'
+            smooth='true' smoothCount='10' smoothTolerance='0.01' smoothThreshold='5'>
+            <a-entity
+                gltf-model='https://raw.githubusercontent.com/StainlessReality/Hosted-WebXR-AR-Business-Card/master/Logo.gltf'
+                scale="100 100 100"
+                position="0 0 0"
+                >
+            </a-entity>
+        </a-nft>
+		<a-entity camera></a-entity>
     </a-scene>
-    <script src="scripts/ar-main.js"></script>
-  </body>
+</body>
 </html>
+
+<!-- gltf-model='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf' -->
