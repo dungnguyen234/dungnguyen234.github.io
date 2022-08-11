@@ -19,11 +19,11 @@ function staticLoadPlaces() {
                 lat: 10.794656272110847,
                 lng: 106.67109465547874,
             },
-            // name: 'PokemonQuan',
-            // location: {
-            //     lat: 16.0575,
-            //     lng: 108.1889,
-            // },
+            name: 'PokemonQuan',
+            location: {
+                lat: 16.0575,
+                lng: 108.1889,
+            },
         },
     ];
 }
