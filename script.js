@@ -48,6 +48,7 @@ var models = [
         rotation: '0 180 0',
         info: 'Articuno, Lv. 80, HP 100/100',
     },
+
     {
         url: './assets/dragonite/scene.gltf',
         scale: '0.005 0.005 0.005',
