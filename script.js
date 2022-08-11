@@ -9,16 +9,22 @@ window.onload = () => {
 function staticLoadPlaces() {
     return [
         {
-             name: 'PokemonPhong',
-            location: {
-                lat: 10.7001836,
-                lng: 106.7298895,
-            },
+            
             name: 'PokemonDung',
             location: {
                 lat: 10.794656272110847,
                 lng: 106.67109465547874,
             },
+            
+        },
+        {
+            name: 'PokemonPhong',
+            location: {
+                lat: 10.7001836,
+                lng: 106.7298895,
+            },
+        },
+        {
             name: 'PokemonQuan',
             location: {
                 lat: 16.0575,
@@ -42,10 +48,10 @@ var models = [
         info: 'Articuno, Lv. 80, HP 100/100',
     },
     {
-        url: './assets/Sumerian/scene.gltf',
-        scale: '0.8 0.8 0.8',
+        url: './assets/dragonite/scene.gltf',
+        scale: '0.08 0.08 0.08',
         rotation: '0 180 0',
-        info: 'Sumerian, Lv. 99, HP 150/150',
+        info: 'Dragonite, Lv. 99, HP 150/150',
     },
 ];
 
