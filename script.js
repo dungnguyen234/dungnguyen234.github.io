@@ -38,8 +38,9 @@ var models = [
     {
         url: './assets/magnemite/scene.gltf',
         scale: '0.5 0.5 0.5',
-        info: 'Magnemite, Lv. 5, HP 10/10',
         rotation: '0 0 0',
+        info: 'Magnemite, Lv. 5, HP 10/10',
+
     },
     {
         url: './assets/articuno/scene.gltf',
@@ -49,7 +50,7 @@ var models = [
     },
     {
         url: './assets/dragonite/scene.gltf',
-        scale: '0.08 0.08 0.08',
+        scale: '0.03 0.03 0.03',
         rotation: '0 180 0',
         info: 'Dragonite, Lv. 99, HP 150/150',
     },
