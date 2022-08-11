@@ -41,12 +41,7 @@ var models = [
         rotation: '0 180 0',
         info: 'Articuno, Lv. 80, HP 100/100',
     },
-    {
-        url: './assets/Sumerian/scene.gltf',
-        scale: '0.8 0.8 0.8',
-        rotation: '0 180 0',
-        info: 'Sumerian, Lv. 99, HP 150/150',
-    },
+    
 ];
 
 var modelIndex = 0;
