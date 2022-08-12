@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
      canvas.toBlob((blob) => {
  const file = new File([blob], "photo.jpg", {type: "image/jpg"});
  const files = [file];
+ var ua = navigator.userAgent.toLowerCase();
  var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
  if(isAndroid)
  {
