@@ -20,25 +20,27 @@ window.onload = () => {
     let scene = document.querySelector('a-scene');
    
     places.forEach((place) => {
+      
     //   let latitude = place.coords.latitude;
     //   let longitude = place.coords.longitude;
     navigator.geolocation.getCurrentPosition( (position)=> {
        var lat= position.coords.latitude;
-        var long= position.coords.longitude;
+        var long = position.coords.longitude;
+        let model = document.createElement('a-entity');
+        model.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${long}`);
+        model.setAttribute('gltf-model', './assets/magnemite/scene.gltf');
+        model.setAttribute('rotation', '0 180 0');
+        model.setAttribute('animation-mixer', '');
+        model.setAttribute('scale', '0.2 0.2 0.2');
+    
+        model.addEventListener('loaded', () => {
+          window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+        });
+    
+        scene.appendChild(model);
       })
 
-      let model = document.createElement('a-entity');
-      model.setAttribute('gps-entity-place', `latitude: lat; longitude: long;`);
-      model.setAttribute('gltf-model', './assets/magnemite/scene.gltf');
-      model.setAttribute('rotation', '0 180 0');
-      model.setAttribute('animation-mixer', '');
-      model.setAttribute('scale', '0.2 0.2 0.2');
-  
-      model.addEventListener('loaded', () => {
-        window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-      });
-  
-      scene.appendChild(model);
+    
     });
   }
  
