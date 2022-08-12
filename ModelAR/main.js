@@ -74,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
      const data = capture(mindarThree);
      preview.style.visibility = "visible";
      previewImage.src = data;
-     var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-        var isSafari = ua.indexOf("ios") > -1;
+   
    });
 
    previewClose.addEventListener("click", () => {
@@ -92,10 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
      canvas.toBlob((blob) => {
  const file = new File([blob], "photo.jpg", {type: "image/jpg"});
  const files = [file];
+ var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
  if(isAndroid)
  {
-   element.setAttribute('download', filename);
-     element.click();
+  const link = document.createElement('a');
+  link.download = 'photo.jpg';
+  link.href = previewImage.src;
+  link.click();
  }
  if (navigator.canShare && navigator.canShare({files})) {
    navigator.share({
