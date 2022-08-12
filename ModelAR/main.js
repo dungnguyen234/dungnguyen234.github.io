@@ -91,8 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
      canvas.toBlob((blob) => {
  const file = new File([blob], "photo.jpg", {type: "image/jpg"});
  const files = [file];
- var ua = navigator.userAgent.toLowerCase();
- var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+ const ua = navigator.userAgent.toLowerCase();
+ const isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
  if(isAndroid)
  {
   const link = document.createElement('a');
@@ -105,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
      files: files,
      title: 'AR Photo',
    })
- } else {
+ } 
+ else {
    const link = document.createElement('a');
    link.download = 'photo.jpg';
    link.href = previewImage.src;
