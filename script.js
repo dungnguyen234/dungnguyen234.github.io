@@ -15,17 +15,20 @@ window.onload = () => {
     ];
   }
   
+  
   function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
    
     places.forEach((place) => {
     //   let latitude = place.coords.latitude;
     //   let longitude = place.coords.longitude;
-    navigator.geolocation.getCurrentPosition((position) => {
-        doSomething(position.coords.latitude, position.coords.longitude);
-      });
+    navigator.geolocation.getCurrentPosition( (position)=> {
+       var lat= position.coords.latitude;
+        var long= position.coords.longitude;
+      })
+
       let model = document.createElement('a-entity');
-      model.setAttribute('gps-entity-place', `latitude: position.coords.latitude; longitude: osition.coords.longitude;`);
+      model.setAttribute('gps-entity-place', `latitude: lat; longitude: long;`);
       model.setAttribute('gltf-model', './assets/magnemite/scene.gltf');
       model.setAttribute('rotation', '0 180 0');
       model.setAttribute('animation-mixer', '');
