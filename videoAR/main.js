@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: './assets/targets/austrade.mind',
+      imageTargetSrc: './assets/targets/venom.mind',
       uiScanning: "#scanning",
       uiLoading: "no",
     });
     const {renderer, scene, camera} = mindarThree;
 
-    const video = await loadVideo("./assets/videos/guitar-player.mp4");
+    const video = await loadVideo("./assets/videos/venom.mp4");
     video.play();
     video.pause();
     const texture = new THREE.VideoTexture(video);
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const plane = new THREE.Mesh(geometry, material);
     
     // plane.rotation.x = Math.PI/2;
-     plane.position.x = -0.2;
+     plane.position.x = 0;
     plane.scale.multiplyScalar(1);
 
     const anchor = mindarThree.addAnchor(0);
