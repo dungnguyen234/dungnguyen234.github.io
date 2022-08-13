@@ -20,13 +20,13 @@ window.onload = () => {
     let scene = document.querySelector('a-scene');
   
     places.forEach((place) => {
-      let latitude ;
-      let longitude ;
-      navigator.geolocation.getCurrentPosition((place) => {
-        latitude = place.coords.latitude;
-        longitude = place.coords.longitude;
-        console.log(place.coords.accuracy);
-      });
+      let latitude = navigator.geolocation.getCurrentPosition(place.coords.latitude);
+      let longitude = navigator.geolocation.getCurrentPosition(place.coords.longitude) ;
+      // navigator.geolocation.getCurrentPosition((place) => {
+      //   latitude = place.coords.latitude;
+      //   longitude = place.coords.longitude;
+      //   console.log(place.coords.accuracy);
+      // });
   
       let model = document.createElement('a-entity');
       model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
