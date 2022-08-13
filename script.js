@@ -31,9 +31,9 @@ window.onload = () => {
       model.setAttribute('scale', '0.2 0.2 0.2');
       model.setAttribute('position','1 1 1');
   
-      model.addEventListener('loaded', () => {
-        window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-      });
+      // model.addEventListener('loaded', () => {
+      //   window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+      // });
   
       scene.appendChild(model);
     });
