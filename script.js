@@ -20,8 +20,8 @@ window.onload = () => {
     let scene = document.querySelector('a-scene');
   
     places.forEach((place) => {
-      let latitude = navigator.geolocation.getCurrentPosition(place.coords.latitude);
-      let longitude = navigator.geolocation.getCurrentPosition(place.coords.longitude) ;
+      let lat = navigator.geolocation.latitude ;
+      let long = navigator.geolocation.longitude ;
       // navigator.geolocation.getCurrentPosition((place) => {
       //   latitude = place.coords.latitude;
       //   longitude = place.coords.longitude;
@@ -29,7 +29,7 @@ window.onload = () => {
       // });
   
       let model = document.createElement('a-entity');
-      model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+      model.setAttribute('gps-entity-place', `latitude: ${lat}; longitude: ${long};`);
       model.setAttribute('gltf-model', './assets/HP-glass-5.glb');
       model.setAttribute('rotation', '0 180 0');
       model.setAttribute('animation-mixer', '');
