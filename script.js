@@ -22,14 +22,19 @@ window.onload = () => {
     places.forEach((place) => {
       let latitude = place.location.lat;
       let longitude = place.location.lng;
+      navigator.geolocation.getCurrentPosition((location) => {
+        latitude = location.coords.latitude;
+        longitude = location.coords.longitude;
+        console.log(location.coords.accuracy);
+      });
   
       let model = document.createElement('a-entity');
-    //   model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+      model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
       model.setAttribute('gltf-model', './assets/HP-glass-5.glb');
       model.setAttribute('rotation', '0 180 0');
       model.setAttribute('animation-mixer', '');
       model.setAttribute('scale', '0.2 0.2 0.2');
-      model.setAttribute('position',model.position);
+      // model.setAttribute('position',model.position);
   
       model.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
