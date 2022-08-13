@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Nuen Ducati</title>
+    <title>Triip HP</title>
     <meta charset="utf-8">
     <meta name="description" content="&lt;model-viewer&gt; template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +30,11 @@ input {position: absolute; display: none}
 
    
     <!-- <model-viewer> HTML element -->
-      <model-viewer id="DucatiAR"
-      src="https://cdn.glitch.global/98d6b349-7a65-4678-b739-69665aaf728a/NUEN.glb?v=1651848172454"
+      <model-viewer id="TriipHP"
+      src="HP-glass-5.glb"
 
-      poster="https://cdn.glitch.com/86f43516-6172-4a58-b9a2-46c74478d5a7%2Fchair2.png?v=1625228915752"
-      alt="A Chair"
+      poster=""
+      alt="A HP"
       shadow-intensity="1.5"
       environment-image="neutral"
       camera-controls
@@ -42,9 +42,9 @@ input {position: absolute; display: none}
       ar-modes="webxr scene-viewer quick-look">
       
      
-      <!-- <button slot="ar-button" id="ar-button" >
+      <button slot="ar-button" id="ar-button" >
           View in your space
-      </button> -->
+      </button>
       <div id="ar-prompt">
           <img src="ar_hand_prompt.png">
       </div>
@@ -77,54 +77,7 @@ input {position: absolute; display: none}
   }
   
   
-  
-  /*    const select = document.querySelector('#variant');
-  
-        modelViewerVariants.addEventListener('load', () => {
-        const names = modelViewerVariants.availableVariants;
-        for (const name of names) {
-          const option = document.createElement('option');
-          option.value = name;
-          option.textContent = name;
-          select.appendChild(option);
-  
-          materials.push(name);
-  
-          let btn = document.createElement("button");
-          btn.innerHTML = name;
-          btn.type = "submit";
-          btn.name = "formBtn";
-          btn.onclick = function(){
-            modelViewerVariants.variantName = name;
-          }
-          document.body.appendChild(btn);
-        }
-  
-  
-      });
-  
-      select.addEventListener('input', (event) => {
-        modelViewerVariants.variantName = event.target.value;
-      });                                                          */
-  
-  
-  
-      function changemat(name){
-        modelViewerVariants.variantName = name;
-      }
-  
-  /*      modelViewer.addEventListener('mousedown', (event) => {
-          window.clearTimeout(timer);
-          document.getElementById('color-controls').style.display='';
-  
-          timer = window.setTimeout(() => {
-            document.getElementById('color-controls').style.display = 'none'; }, 4000);
-          console.log("ID "+timer);
-  
-    }, true);
-  
-  
-  */
+ 
   
       function keepOn(){
         window.clearTimeout(timer);
