@@ -10,7 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: './assets/targets/course-banner.mind',
+      imageTargetSrc: './assets/targets/austrade.mind',
+      uiScanning: "#scanning",
+      uiLoading: "no",
     });
     const {renderer, scene, camera} = mindarThree;
 
@@ -23,9 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     //const material = new THREE.MeshBasicMaterial({map: texture});
     const material = createChromaMaterial(texture, 0x00ff00);
     const plane = new THREE.Mesh(geometry, material);
+    
     // plane.rotation.x = Math.PI/2;
-    // plane.position.y = 0.7;
-    plane.scale.multiplyScalar(4);
+     plane.position.x = -0.2;
+    plane.scale.multiplyScalar(1);
 
     const anchor = mindarThree.addAnchor(0);
     anchor.group.add(plane);
