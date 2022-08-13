@@ -29,7 +29,7 @@ window.onload = () => {
       model.setAttribute('rotation', '0 180 0');
       model.setAttribute('animation-mixer', '');
       model.setAttribute('scale', '0.2 0.2 0.2');
-      model.setAttribute('position','0 0 0');
+      model.setAttribute('position','1 1 1');
   
       model.addEventListener('loaded', () => {
         window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
