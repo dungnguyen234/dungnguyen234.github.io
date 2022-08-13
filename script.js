@@ -20,12 +20,12 @@ window.onload = () => {
     let scene = document.querySelector('a-scene');
   
     places.forEach((place) => {
-      let latitude = place.location.lat;
-      let longitude = place.location.lng;
-      navigator.geolocation.getCurrentPosition((location) => {
-        latitude = location.coords.latitude;
-        longitude = location.coords.longitude;
-        console.log(location.coords.accuracy);
+      let latitude ;
+      let longitude ;
+      navigator.geolocation.getCurrentPosition((place) => {
+        latitude = place.coords.latitude;
+        longitude = place.coords.longitude;
+        console.log(place.coords.accuracy);
       });
   
       let model = document.createElement('a-entity');
