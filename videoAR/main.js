@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
       renderer.render(scene, camera);
     });
   }
-  const startButton = document.createElement("button");
-  startButton.textContent = "Start";
-  startButton.addEventListener("click", start);
-  document.body.appendChild(startButton);
-  //start();
+  // const startButton = document.createElement("button");
+  // startButton.textContent = "Start";
+  // startButton.addEventListener("click", start);
+  // document.body.appendChild(startButton);
+  start();
 });
