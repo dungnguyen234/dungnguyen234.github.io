@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>TriipHP collect</title>
+    <meta charset="utf-8">
+    <meta name="description" content="&lt;model-viewer&gt; template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"/>
+    <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+    <style>
+      body {overflow: hidden;}
+input {position: absolute; display: none}
+
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* 
+.menu {
+  z-index: 1;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: 0px;
+  margin-top: 270px;
+}
+
+.menu1 {
+  z-index: 1;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: 270px;
+}
+
+.menu2 {
+  z-index: 1;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: 265px;
+  margin-top: 290px;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  position: absolute;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.material-icons.md-36 { font-size: 16px; color: #03A9F4 }
+
+.btn {
+  background: #ECEFF1;
+  font-size: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  
+  -webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.btn:not(:first-child) {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  z-index: -2;
+  
+  -webkit-transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+  transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+}
+
+.btn:nth-child(2) {top:0px;-webkit-transition-delay: 0s;transition-delay: 0s}
+.btn:nth-child(3) {top:0px;left:0px;-webkit-transition-delay: 0.1s;transition-delay: 0.1s}
+.btn:nth-child(4) {left:0px;;-webkit-transition-delay: 0.2s;;transition-delay: 0.2s}
+.btn:nth-child(5) {top:0px;left:0px;-webkit-transition-delay: 0.3s;transition-delay: 0.3s}
+.btn:nth-child(6) {top:0px;-webkit-transition-delay: 0.4s;transition-delay: 0.4s}
+.btn:nth-child(7) {top:0px;left:0px;-webkit-transition-delay: 0.5s;transition-delay: 0.5s}
+.btn:nth-child(8) {left:0px;-webkit-transition-delay: 0.6s;transition-delay: 0.6s}
+.btn:nth-child(9) {top:0px;left:0px;-webkit-transition-delay: 0.7s;transition-delay: 0.7s}
+
+input#toggle:checked ~ #show-menu .btn:nth-child(2) {
+  top:-50px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle:checked ~ #show-menu .btn:nth-child(3) {
+  top:-50px;left:0px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle:checked ~ #show-menu .btn:nth-child(4) {
+  top:-50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle:checked ~ #show-menu .btn:nth-child(5) {
+  top :0px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle:checked ~ #show-menu .btn:nth-child(6) {
+  top:50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle:checked ~ #show-menu .btn:nth-child(7) {
+  top:50px;left:0px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle:checked ~ #show-menu .btn:nth-child(8) {
+  left:-150px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle:checked ~ #show-menu .btn:nth-child(9) {
+  top:-100px;left:-100px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+.menuBtn, .closeBtn {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.closeBtn {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+input#toggle:checked ~ #show-menu .btn .menuBtn {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+input#toggle:checked ~ #show-menu .btn .closeBtn {
+  transform: translateY(0px);
+  opacity: 1;
+} */
+
+/*start*/
+
+input#toggle1:checked ~ #show-menu .btn:nth-child(2) {
+  top:-50px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle1:checked ~ #show-menu .btn:nth-child(3) {
+  top:-50px;left:0px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle1:checked ~ #show-menu .btn:nth-child(4) {
+  top:-50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle1:checked ~ #show-menu .btn:nth-child(5) {
+  top :0px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle1:checked ~ #show-menu .btn:nth-child(6) {
+  top:50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle1:checked ~ #show-menu .btn:nth-child(7) {
+  top:50px;left:0px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle1:checked ~ #show-menu .btn:nth-child(8) {
+  left:-150px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle1:checked ~ #show-menu .btn:nth-child(9) {
+  top:-100px;left:-100px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+.menuBtn, .closeBtn {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.closeBtn {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+input#toggle1:checked ~ #show-menu .btn .menuBtn {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+input#toggle1:checked ~ #show-menu .btn .closeBtn {
+  transform: translateY(0px);
+  opacity: 1;
+}
+/*end toggle1*/
+
+input#toggle2:checked ~ #show-menu .btn:nth-child(2) {
+  top:-50px;left:-50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle2:checked ~ #show-menu .btn:nth-child(3) {
+  top:-50px;left:0px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle2:checked ~ #show-menu .btn:nth-child(4) {
+  top:-50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle2:checked ~ #show-menu .btn:nth-child(5) {
+  top :0px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle2:checked ~ #show-menu .btn:nth-child(6) {
+  top:50px;left:50px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle2:checked ~ #show-menu .btn:nth-child(7) {
+  top:50px;left:0px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle2:checked ~ #show-menu .btn:nth-child(8) {
+  left:-150px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+input#toggle2:checked ~ #show-menu .btn:nth-child(9) {
+  top:-100px;left:-100px;opacity:1;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+
+.menuBtn, .closeBtn {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.closeBtn {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+input#toggle2:checked ~ #show-menu .btn .menuBtn {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+input#toggle2:checked ~ #show-menu .btn .closeBtn {
+  transform: translateY(0px);
+  opacity: 1;
+}
+/*end toggle2*/
+    </style>
+  </head>
+  <body>
+
+    
+
+
+
+    
+    <!-- <model-viewer> HTML element -->
+      <model-viewer id="HPTriip"
+      src="HP-glass-10.glb"
+
+      poster="https://cdn.glitch.com/86f43516-6172-4a58-b9a2-46c74478d5a7%2Fchair2.png?v=1625228915752"
+      alt="A Chair"
+      shadow-intensity="1.5"
+      environment-image="neutral"
+      camera-controls
+      auto-rotate ar
+      ar-modes="webxr scene-viewer quick-look">
+      
+      <button class="Hotspot" slot="hotspot-1" data-position="0.003m 0.08578798754578425m -0.0038256460048888463m" data-normal="0.005282201301281153m 0.4650571310068707m 0.8852649113395782m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">Get Item</div>
+      <!-- </button><button class="Hotspot" slot="hotspot-2" data-position="0.04464367214701016m -0.23948777876915792m 0.1921141477158904m" data-normal="-0.02136696703161614m 0.9995952067518984m 0.018784976936351883m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">Seat Cushion</div>
+      </button><button class="Hotspot" slot="hotspot-3" data-position="-0.2345625024038993m -0.05200513843984053m 0.0668034984755948m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">Arm</div>
+      </button><button class="Hotspot" slot="hotspot-4" data-position="0.03348973341977336m -0.5785996930291362m 0.06618654895301869m" data-normal="0.007773013452833636m 0.9655975034852371m 0.25992506905825735m" data-visibility-attribute="visible">
+          <div class="HotspotAnnotation">Chair Base</div> -->
+      </button>
+      <div class="progress-bar hide" slot="progress-bar">
+          <div class="update-bar"></div>
+      </div>
+      <!-- <button slot="ar-button" id="ar-button" >
+          View in your space
+      </button> -->
+      <div id="ar-prompt">
+          <img src="ar_hand_prompt.png">
+      </div>
+    </model-viewer>  
+    <script src="script.js"></script>
+    <script>
+      const modelViewerVariants = document.querySelector("model-viewer#chair");
+      const modelViewer = document.querySelector('#chair');
+      document.getElementById('color-controls').style.display = 'none';
+      document.getElementById('qr-image').style.display = 'none';
+      var timer;
+  
+      var modal = document.getElementById("myModal");
+  
+  
+      // Get the image and insert it inside the modal - use its "alt" text as a caption
+      var img = document.getElementById("myImg");
+      var modalImg = document.getElementById("img01");
+      img.onclick = function(){
+      modal.style.display = "block";
+      modalImg.src = "https://cdn.glitch.com/86f43516-6172-4a58-b9a2-46c74478d5a7%2Fqr-code.png?v=1626090973247";
+    }
+  
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  
+  
+  
+  /*    const select = document.querySelector('#variant');
+  
+        modelViewerVariants.addEventListener('load', () => {
+        const names = modelViewerVariants.availableVariants;
+        for (const name of names) {
+          const option = document.createElement('option');
+          option.value = name;
+          option.textContent = name;
+          select.appendChild(option);
+  
+          materials.push(name);
+  
+          let btn = document.createElement("button");
+          btn.innerHTML = name;
+          btn.type = "submit";
+          btn.name = "formBtn";
+          btn.onclick = function(){
+            modelViewerVariants.variantName = name;
+          }
+          document.body.appendChild(btn);
+        }
+  
+  
+      });
+  
+      select.addEventListener('input', (event) => {
+        modelViewerVariants.variantName = event.target.value;
+      });                                                          */
+  
+  
+  
+      function changemat(name){
+        modelViewerVariants.variantName = name;
+      }
+  
+  /*      modelViewer.addEventListener('mousedown', (event) => {
+          window.clearTimeout(timer);
+          document.getElementById('color-controls').style.display='';
+  
+          timer = window.setTimeout(() => {
+            document.getElementById('color-controls').style.display = 'none'; }, 4000);
+          console.log("ID "+timer);
+  
+    }, true);
+  
+  
+  */
+  
+      function keepOn(){
+        window.clearTimeout(timer);
+      }
+  
+      function resetTime(){
+        timer = window.setTimeout(() => {
+            document.getElementById('color-controls').style.display = 'none'; }, 4000);
+      }
+  
+       modelViewerVariants.addEventListener('load', () => {
+         document.getElementById('color-controls').style.display = '';
+         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+           //Nothing
+         }else{
+           document.getElementById('qr-image').style.display = '';
+         }
+  
+  });
+  
+  
+    </script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  </body>
+</html>
