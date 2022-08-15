@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, scene, camera} = mindarThree;
 
-    const video = await loadVideo("./assets/videos/venom.mp4");
+    const video = await loadVideo("./assets/videos/guitar-player.mp4");
     video.play();
     video.pause();
     const texture = new THREE.VideoTexture(video);
@@ -45,9 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
       renderer.render(scene, camera);
     });
   }
-  // const startButton = document.createElement("button");
-  // startButton.textContent = "Start";
-  // startButton.addEventListener("click", start);
-  // document.body.appendChild(startButton);
+ 
   start();
 });
