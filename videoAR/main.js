@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, scene, camera} = mindarThree;
 
-    const video = await loadVideo("./assets/videos/tiger.mp4");
+    const video = await loadVideo("./assets/videos/videoplayback-tiger-10s.mp4");
     video.play();
     video.pause();
     const texture = new THREE.VideoTexture(video);
