@@ -1,0 +1,20 @@
+<model-viewer bounds="tight" src="86f43516-6172-4a58-b9a2-46c74478d5a7_chair-hs.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1" auto-rotate environment-image="neutral">
+    <button class="Hotspot" slot="hotspot-1" data-position="0.03241557755894736m 0.3578798754578425m -0.38256460048888463m" data-normal="0.005282201301281153m 0.4650571310068707m 0.8852649113395782m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Back Cushion</div>
+    </button><button class="Hotspot" slot="hotspot-2" data-position="0.04464367214701016m -0.23948777876915792m 0.1921141477158904m" data-normal="-0.02136696703161614m 0.9995952067518984m 0.018784976936351883m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Seat Cushion</div>
+    </button><button class="Hotspot" slot="hotspot-3" data-position="-0.2345625024038993m -0.05200513843984053m 0.0668034984755948m" data-normal="0m 1m 0m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Arm</div>
+    </button><button class="Hotspot" slot="hotspot-4" data-position="0.03348973341977336m -0.5785996930291362m 0.06618654895301869m" data-normal="0.007773013452833636m 0.9655975034852371m 0.25992506905825735m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">Chair Base</div>
+    </button>
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer>
