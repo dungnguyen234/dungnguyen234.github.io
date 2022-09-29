@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
       video.pause();
     }
     video.addEventListener( 'play', () => {
-      video.currentTime = 6;
+
+      video.currentTime = 30;
       
     });
 
@@ -70,10 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const ans3Icon = new THREE.Mesh(AnswerGeometry, ans3Material);
     const ans4Icon = new THREE.Mesh(AnswerGeometry, ans4Material);
 
-    ans1Icon.position.set(-0.42, -0.5, 0);
-    ans2Icon.position.set(-0.14, -0.5, 0);
-    ans3Icon.position.set(0.14, -0.5, 0);
-    ans4Icon.position.set(0.42, -0.5, 0);
+    ans1Icon.position.set(-0.42, -0.4, 0);
+    ans2Icon.position.set(-0.42, -0.6, 0);
+    ans3Icon.position.set(0.42, -0.4, 0);
+    ans4Icon.position.set(0.42, -0.6, 0);
     
     anchor.group.add(Question);
     anchor.group.add(ans1Icon);
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //---------detect when end video
     video.addEventListener('ended', (event) => {
-      
+      plane.visible = false;
       video.visible = false;
       Question.visible = true;
       ans1Icon.visible = true;
@@ -146,16 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (o.userData.clickable) {
 	   if (o === ans1Icon) {
 	    textObj.visible = true;
-	    textElement.innerHTML = "https://github.com/hiukim/mind-ar-js";
+	    textElement.innerHTML = "Wrong answer !!";
 	  } else if (o === ans2Icon) {
 	    textObj.visible = true;
-	    textElement.innerHTML = "hiukim528 [at] gmail";
+	    textElement.innerHTML = "Wrong answer !!";
 	  } else if (o === ans3Icon) {
 	    textObj.visible = true;
-	    textElement.innerHTML = "https://hiukim.com";
+	    textElement.innerHTML = "Correct!!! your gift code is 12345";
 	  } else if (o === ans4Icon) {
 	    textObj.visible = true;
-	    textElement.innerHTML = "Vancouver, Canada";
+	    textElement.innerHTML = "WrongAnswer !!!";
 	  }
 	}
       }
