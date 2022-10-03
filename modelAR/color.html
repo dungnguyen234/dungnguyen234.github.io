@@ -8,13 +8,24 @@
 
 <body>
     <div id="holder">
-        <div id="text">
-            <h1 class="sample-text">Play around with the model on the right!</h1>
-            <h1 class="sample-text">Just watch it rotate on its own or do it yourself with the mouse</h1>
-            <h1 class="sample-text">You can also zoom in the model!</h1>
-        </div>
+        
         <div id="model">
-            <model-viewer id="color" camera-controls touch-action="pan-y" interaction-prompt="none" src="RobotExpressive.glb" ar alt="A 3D model of an astronaut">
+            <model-viewer id="color" camera-controls touch-action="pan-y" interaction-prompt="none" src="RobotExpressive.glb" ar alt="A 3D model of an astronaut"
+              poster=""
+      alt="A HP"
+      shadow-intensity="1.5"
+      environment-image="neutral"
+      camera-controls
+      auto-rotate ar
+      ar-modes="webxr scene-viewer quick-look">
+      
+     
+      <!-- <button slot="ar-button" id="ar-button" >
+          View in your space
+      </button> -->
+      <div id="ar-prompt">
+          <img src="ar_hand_prompt.png">
+      </div>
   <div class="controls" ,="" id="color-controls">
     <button data-color="1,0,0,1">Red</button>
     <button data-color="0,1,0,1">Green</button>
