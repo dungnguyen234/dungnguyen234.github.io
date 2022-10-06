@@ -8,11 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // initialize MindAR 
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: '../../assets/targets/sintel.mind',
+      imageTargetSrc: './assets/targets/sintel.mind',
+      uiScanning: "#scanning",
+      uiLoading: "no",
     });
     const {renderer, cssRenderer, scene, cssScene, camera} = mindarThree;
 
-    const video = await loadVideo("../../assets/videos/sintel/sintel.mp4");
+    const video = await loadVideo("./assets/QuestionAR/video.mp4");
     const texture = new THREE.VideoTexture(video);
     //=----------video part
     const geometry = new THREE.PlaneGeometry(1, 204/480);
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     video.addEventListener( 'play', () => {
 
-      video.currentTime = 30;
+      // video.currentTime = 10;
       
     });
 
@@ -43,12 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
       ans2Texture,
       ans3Texture,
       ans4Texture,
+      resultTexture,
     ] = await loadTextures([
-      '../../assets/targets/card.png',
-      '../../assets/portfolio/icons/email.png',
-      '../../assets/portfolio/icons/location.png',
-      '../../assets/portfolio/icons/web.png',
-      '../../assets/portfolio/icons/profile.png',
+      './assets/QuestionAR/questioncard.png',
+      './assets/QuestionAR/question1.png',
+      './assets/QuestionAR/question2.png',
+      './assets/QuestionAR/question3.png',
+      './assets/QuestionAR/question4.png',
+      './assets/QuestionAR/Answer.png',
+
     ]);
     const PlaneGeometry = new THREE.PlaneGeometry(1, 0.552);
     const QuestionMaterial = new THREE.MeshBasicMaterial({map: QuestionTexture});
@@ -56,36 +61,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
     //------------ decalre for question content
 
+    const AnswerGeometry = new THREE.PlaneGeometry(0.5, 0.08);
 
-    const AnswerGeometry = new THREE.CircleGeometry(0.075, 32);
+    const ResultGeometry = new THREE.PlaneGeometry(0.5, 0.2);
+
+     //const AnswerGeometry = new THREE.CircleGeometry(0.075, 32);
     const ans1Material = new THREE.MeshBasicMaterial({map: ans1Texture});
     const ans2Material = new THREE.MeshBasicMaterial({map: ans2Texture});
     const ans3Material = new THREE.MeshBasicMaterial({map: ans3Texture});
     const ans4Material = new THREE.MeshBasicMaterial({map: ans4Texture});
+    const resultMaterial = new THREE.MeshBasicMaterial({map: resultTexture});
+
 
     const ans1Icon = new THREE.Mesh(AnswerGeometry, ans1Material);
     const ans2Icon = new THREE.Mesh(AnswerGeometry, ans2Material);
     const ans3Icon = new THREE.Mesh(AnswerGeometry, ans3Material);
     const ans4Icon = new THREE.Mesh(AnswerGeometry, ans4Material);
+    const resultIcon = new THREE.Mesh(ResultGeometry, resultMaterial);
+
 
     ans1Icon.position.set(-0.42, -0.4, 0);
-    ans2Icon.position.set(-0.42, -0.6, 0);
+    ans2Icon.position.set(-0.42, -0.7, 0);
     ans3Icon.position.set(0.42, -0.4, 0);
-    ans4Icon.position.set(0.42, -0.6, 0);
-    
+    ans4Icon.position.set(0.42, -0.7, 0);
+    resultIcon.position.set(0, -0.9, 0);
+
     anchor.group.add(Question);
     anchor.group.add(ans1Icon);
     anchor.group.add(ans2Icon);
     anchor.group.add(ans3Icon);
     anchor.group.add(ans4Icon);
+    anchor.group.add(resultIcon);
 
     ans1Icon.userData.clickable = true;
     ans2Icon.userData.clickable = true;
     ans3Icon.userData.clickable = true;
     ans4Icon.userData.clickable = true;
+    resultIcon.userData.clickable = true;
 
     //--------------------hide icon at start--------------
     Question.visible = false;
@@ -93,17 +107,21 @@ document.addEventListener('DOMContentLoaded', () => {
     ans2Icon.visible = false;
     ans3Icon.visible = false;
     ans4Icon.visible = false;
-
+    resultIcon.visible = false;
     //---------detect when end video
     video.addEventListener('ended', (event) => {
+
       plane.visible = false;
-      video.visible = false;
+      video.mute = true;
+      scene.remove(video);
+      scene.remove(plane);
+      scene.remove(texture)
       Question.visible = true;
       ans1Icon.visible = true;
       ans2Icon.visible = true;
       ans3Icon.visible = true;
       ans4Icon.visible = true;
-            
+      resultIcon.visible = true;     
         
     });
 
@@ -113,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const textElement = document.createElement("div");
     const textObj = new CSS3DObject(textElement);
-    textObj.position.set(0, -700, 0);
+    textObj.position.set(0, -200, 0);
     textObj.visible = false;
     textElement.style.background = "#FFFFFF";
     textElement.style.padding = "30px";
@@ -129,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ans3Icon.userData.clickable = true;
     ans4Icon.userData.clickable = true;
 
-   
+
 
     document.body.addEventListener('click', (e) => {
       const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -138,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const raycaster = new THREE.Raycaster();
       raycaster.setFromCamera(mouse, camera);
       const intersects = raycaster.intersectObjects(scene.children, true);
-
+      let correct = false;
       if (intersects.length > 0) {
 	let o = intersects[0].object; 
 	while (o.parent && !o.userData.clickable) {
@@ -146,18 +164,28 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 	if (o.userData.clickable) {
 	   if (o === ans1Icon) {
-	    textObj.visible = true;
-	    textElement.innerHTML = "Wrong answer !!";
+
+      textObj.visible = false;
+	     textElement.innerHTML = "Wrong answer !!";
 	  } else if (o === ans2Icon) {
-	    textObj.visible = true;
+
+      textObj.visible = false;
 	    textElement.innerHTML = "Wrong answer !!";
 	  } else if (o === ans3Icon) {
-	    textObj.visible = true;
-	    textElement.innerHTML = "Correct!!! your gift code is 12345";
+
+      textObj.visible = false;
+	     textElement.innerHTML = "Correct!!! your gift code is 12345";
 	  } else if (o === ans4Icon) {
-	    textObj.visible = true;
-	    textElement.innerHTML = "WrongAnswer !!!";
-	  }
+
+      textObj.visible = false;
+	     textElement.innerHTML = "WrongAnswer !!!";
+	  }else if(o === resultIcon)
+    {
+
+      textObj.visible = false;
+        textObj.visible = true;
+      
+    }
 	}
       }
     });
@@ -167,7 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setAnimationLoop(() => {
       const delta = clock.getDelta();
       const elapsed = clock.getElapsedTime();
-      const iconScale = 1 + 0.2 * Math.sin(elapsed*5);
+      const AnsScale = 1 + 0.2 * Math.sin(elapsed*5);
+      const iconScale = 1 + 0.05 * Math.sin(elapsed*5);
+
+      resultIcon.scale.set(AnsScale,AnsScale,AnsScale);
       [ans1Icon, ans2Icon, ans3Icon, ans4Icon].forEach((icon) => {
 	icon.scale.set(iconScale, iconScale, iconScale);
       });
