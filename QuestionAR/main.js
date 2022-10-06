@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //------------ decalre for question content
 
-    const AnswerGeometry = new THREE.PlaneGeometry(0.5, 0.08);
+    const AnswerGeometry = new THREE.PlaneGeometry(0.45, 0.1);
 
-    const ResultGeometry = new THREE.PlaneGeometry(0.5, 0.2);
+    const ResultGeometry = new THREE.PlaneGeometry(0.3, 0.15);
 
      //const AnswerGeometry = new THREE.CircleGeometry(0.075, 32);
     const ans1Material = new THREE.MeshBasicMaterial({map: ans1Texture});
@@ -82,11 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultIcon = new THREE.Mesh(ResultGeometry, resultMaterial);
 
 
-    ans1Icon.position.set(-0.42, -0.4, 0);
-    ans2Icon.position.set(-0.42, -0.7, 0);
-    ans3Icon.position.set(0.42, -0.4, 0);
-    ans4Icon.position.set(0.42, -0.7, 0);
-    resultIcon.position.set(0, -0.9, 0);
+    ans1Icon.position.set(-0.25, -0.4, 0);
+    ans2Icon.position.set(-0.25, -0.55, 0);
+    ans3Icon.position.set(0.25, -0.4, 0);
+    ans4Icon.position.set(0.25, -0.55, 0);
+    resultIcon.position.set(0, -0.7, 0);
 
     anchor.group.add(Question);
     anchor.group.add(ans1Icon);
@@ -191,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const clock = new THREE.Clock();
+
     await mindarThree.start();
     renderer.setAnimationLoop(() => {
       const delta = clock.getDelta();
@@ -199,9 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const iconScale = 1 + 0.05 * Math.sin(elapsed*5);
 
       resultIcon.scale.set(AnsScale,AnsScale,AnsScale);
-      [ans1Icon, ans2Icon, ans3Icon, ans4Icon].forEach((icon) => {
-	icon.scale.set(iconScale, iconScale, iconScale);
-      });
+      // [ans1Icon, ans2Icon, ans3Icon, ans4Icon].forEach((icon) => {
+	    // icon.scale.set(iconScale, iconScale, iconScale);
+      // });
 
      
 
@@ -209,5 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
       cssRenderer.render(cssScene, camera);
     });
   }
-  start();
+  // const startButton = document.createElement("button");
+  // startButton.textContent = "Start";
+  // startButton.addEventListener("click", start);
+  // document.body.appendChild(startButton);
+ start();
 });
