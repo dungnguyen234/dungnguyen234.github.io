@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, cssRenderer, scene, cssScene, camera} = mindarThree;
 
-    const video = await loadVideo("../../assets/videos/sintel/sintel.mp4");
+    const video = await loadVideo("./assets/QuestionAR/generali.mov");
     const texture = new THREE.VideoTexture(video);
     //=----------video part
-    const geometry = new THREE.PlaneGeometry(1, 204/480);
+    const geometry = new THREE.PlaneGeometry(1, 1080/1920);
     const material = new THREE.MeshBasicMaterial({map: texture});
     const plane = new THREE.Mesh(geometry, material);
 
