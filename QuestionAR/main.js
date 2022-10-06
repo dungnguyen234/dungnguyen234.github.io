@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, cssRenderer, scene, cssScene, camera} = mindarThree;
 
-    const video = await loadVideo("./assets/QuestionAR/generali3.mp4");
+    const video = await loadVideo("./assets/QuestionAR/generali5.mp4");
     const texture = new THREE.VideoTexture(video);
     //=----------video part
     const geometry = new THREE.PlaneGeometry(1, 1080/1920);
@@ -131,8 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
     textObj.position.set(0, -200, 0);
     textObj.visible = false;
     textElement.style.background = "#FFFFFF";
-    textElement.style.padding = "30px";
-    textElement.style.fontSize = "60px";
+    textElement.style.padding = "40px";
+    textElement.style.fontSize = "50px";
 
     const cssAnchor = mindarThree.addCSSAnchor(0);
     cssAnchor.group.add(textObj);
