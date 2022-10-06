@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, cssRenderer, scene, cssScene, camera} = mindarThree;
 
-    const video = await loadVideo("./assets/QuestionAR/generali4.mp4");
+    const video = await loadVideo("./assets/QuestionAR/generali3.mp4");
     const texture = new THREE.VideoTexture(video);
     //=----------video part
     const geometry = new THREE.PlaneGeometry(1, 1080/1920);
@@ -111,11 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //---------detect when end video
     video.addEventListener('ended', (event) => {
 
-      plane.visible = false;
       video.mute = true;
-      scene.remove(video);
-      scene.remove(plane);
-      scene.remove(texture)
+      plane.visible = false;
       Question.visible = true;
       ans1Icon.visible = true;
       ans2Icon.visible = true;
@@ -199,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const AnsScale = 1 + 0.2 * Math.sin(elapsed*5);
       const iconScale = 1 + 0.05 * Math.sin(elapsed*5);
 
-      resultIcon.scale.set(AnsScale,AnsScale,AnsScale);
+      // resultIcon.scale.set(AnsScale,AnsScale,AnsScale);
       // [ans1Icon, ans2Icon, ans3Icon, ans4Icon].forEach((icon) => {
 	    // icon.scale.set(iconScale, iconScale, iconScale);
       // });
