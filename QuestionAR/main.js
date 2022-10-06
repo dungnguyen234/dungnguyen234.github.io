@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // initialize MindAR 
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: './assets/targets/sintel.mind',
+      imageTargetSrc: './assets/targets/generali.mind',
       uiScanning: "#scanning",
       uiLoading: "no",
     });
