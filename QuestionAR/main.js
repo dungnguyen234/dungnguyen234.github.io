@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, cssRenderer, scene, cssScene, camera} = mindarThree;
 
-    const video = await loadVideo("./assets/QuestionAR/generali3.mp4");
+    const video = await loadVideo("./assets/QuestionAR/generali2.mp4");
     const texture = new THREE.VideoTexture(video);
     //=----------video part
     const geometry = new THREE.PlaneGeometry(1, 1080/1920);
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.group.add(plane);
 
     anchor.onTargetFound = () => {
-      video.play();
+      //video.play();
     }
     anchor.onTargetLost = () => {
-      video.pause();
+      //video.pause();
     }
     video.addEventListener( 'play', () => {
 
@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ans3Texture,
       ans4Texture,
       resultTexture,
+      playTexture,
     ] = await loadTextures([
       './assets/QuestionAR/questioncard.png',
       './assets/QuestionAR/question1.png',
@@ -53,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       './assets/QuestionAR/question3.png',
       './assets/QuestionAR/question4.png',
       './assets/QuestionAR/Answer.png',
+      './assets/QuestionAR/Play.png',
 
     ]);
     const PlaneGeometry = new THREE.PlaneGeometry(1, 0.552);
@@ -67,11 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const ResultGeometry = new THREE.PlaneGeometry(0.3, 0.15);
 
+    const iconGeometry = new THREE.CircleGeometry(0.075, 32);
+
+
      //const AnswerGeometry = new THREE.CircleGeometry(0.075, 32);
     const ans1Material = new THREE.MeshBasicMaterial({map: ans1Texture});
     const ans2Material = new THREE.MeshBasicMaterial({map: ans2Texture});
     const ans3Material = new THREE.MeshBasicMaterial({map: ans3Texture});
     const ans4Material = new THREE.MeshBasicMaterial({map: ans4Texture});
+    const playbtnMaterial = new THREE.MeshBasicMaterial({map: playTexture});
     const resultMaterial = new THREE.MeshBasicMaterial({map: resultTexture});
 
 
@@ -80,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ans3Icon = new THREE.Mesh(AnswerGeometry, ans3Material);
     const ans4Icon = new THREE.Mesh(AnswerGeometry, ans4Material);
     const resultIcon = new THREE.Mesh(ResultGeometry, resultMaterial);
+    const playbutton =  new THREE.Mesh(iconGeometry, playbtnMaterial);
 
 
     ans1Icon.position.set(-0.25, -0.4, 0);
@@ -87,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ans3Icon.position.set(0.25, -0.4, 0);
     ans4Icon.position.set(0.25, -0.55, 0);
     resultIcon.position.set(0, -0.7, 0);
+    playbutton.position.set(0,0,0.1);
 
     anchor.group.add(Question);
     anchor.group.add(ans1Icon);
@@ -94,12 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.group.add(ans3Icon);
     anchor.group.add(ans4Icon);
     anchor.group.add(resultIcon);
+    anchor.group.add(playbutton);
 
     ans1Icon.userData.clickable = true;
     ans2Icon.userData.clickable = true;
     ans3Icon.userData.clickable = true;
     ans4Icon.userData.clickable = true;
     resultIcon.userData.clickable = true;
+    playbutton.userData.clickable = true;
 
     //--------------------hide icon at start--------------
     Question.visible = false;
@@ -182,6 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
       textObj.visible = false;
         textObj.visible = true;
       
+    }
+    else if(o === playbutton)
+    {
+      playbutton.visible = false;
+      if (video.paused) {
+	      video.play();
+	    } else {
+	      video.pause();
+	    }
     }
 	}
       }
