@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       './assets/QuestionAR/question3.png',
       './assets/QuestionAR/question4.png',
       './assets/QuestionAR/Answer.png',
-      './assets/QuestionAR/play-button.png',
+      './assets/QuestionAR/play.png',
 
     ]);
     const PlaneGeometry = new THREE.PlaneGeometry(1, 0.552);
