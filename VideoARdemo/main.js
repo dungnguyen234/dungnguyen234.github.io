@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     const {renderer, cssRenderer, scene, cssScene, camera} = mindarThree;
 
-    const video = await loadVideo("./assets/VideoAR/Video.mp4");
+    const video = await loadVideo("./assets/QuestionAR/Video.mp4");
     const texture = new THREE.VideoTexture(video);
     //=----------video part
     const geometry = new THREE.PlaneGeometry(1, 1080/1920);
