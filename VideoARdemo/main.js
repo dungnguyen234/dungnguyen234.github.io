@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       playTexture,
     ] = await loadTextures([
       
-      './assets/VideoAR/play.png',
+      './assets/QuestionAR/play.png',
 
     ]);
     const PlaneGeometry = new THREE.PlaneGeometry(1, 0.552);
