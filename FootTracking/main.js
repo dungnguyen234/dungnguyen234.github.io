@@ -3,7 +3,7 @@ const _settings = {
   
   // CONVERSES SHOES:
   // 3D models:
-  shoeRightPath: 'assets/sneaker.glb',
+  shoeRightPath: 'assets/sneaker-scale.glb',
   isModelLightMapped: true,
   occluderPath: 'assets/occluder.glb',
 
@@ -118,8 +118,8 @@ function start(three){
   const dirLight2 = new THREE.DirectionalLight(0xffcc99, 0.3);
   dirLight2.position.set(0, 0, 100);
   three.scene.add(dirLight2);
-  const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
-  three.scene.add( directionalLight );
+  // const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+  // three.scene.add( directionalLight );
   // set lighting:
   if (!_settings.isModelLightMapped){
     const pointLight = new THREE.PointLight(0xffffff, 2);
