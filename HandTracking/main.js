@@ -5,12 +5,13 @@ const _settings = {
   modelURL: 'assets/merry_christmas.glb',
   animationSpeedFactor: 2,
 
+
   // to get this parameters, open /dev/models3D/handWithPlaceholders.blend
   // and look the pose of CubePalm mesh:
   scale: 0.025, 
   translation: [0, -9, -1.68],
   euler: [Math.PI/2 + Math.PI/4, 0, 0, "XYZ"], // X,Y,Z,W
-
+  
   // blob shadow:
   blobShadowSize: 16,
   blobShadowRadiusStart: 0.2, // between 0 (shadow gradient start at center of shadow) and 1
@@ -175,7 +176,9 @@ function start(three){
   const dirLight2 = new THREE.DirectionalLight(0xffcc99, 0.3);
   dirLight2.position.set(0, 0, 100);
   three.scene.add(dirLight2);
-
+  const pointLight = new THREE.PointLight(0xffffff, 2);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+  three.scene.add(pointLight,ambientLight);
   // init the tracker, i.e. the object stuck at the palm of the hand:
   _three.tracker = new THREE.Object3D();
   
