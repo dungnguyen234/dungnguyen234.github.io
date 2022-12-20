@@ -104,20 +104,25 @@ function start(three){
   // set tonemapping:
   three.renderer.toneMapping = THREE.ACESFilmicToneMapping;
   three.renderer.outputEncoding = THREE.sRGBEncoding;
-
+  const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+  three.scene.add( directionalLight );
   // set lighting:
   if (!_settings.isModelLightMapped){
     const pointLight = new THREE.PointLight(0xffffff, 2);
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
 
     three.scene.add(pointLight, ambientLight);
-    const dirLight = new THREE.DirectionalLight(0x8888ff, 0.5);
+    // const dirLight = new THREE.DirectionalLight(0x8888ff, 0.5);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+
   dirLight.position.set(0,-100, 0);
   three.scene.add(dirLight);
 
   const dirLight2 = new THREE.DirectionalLight(0xffcc99, 0.3);
   dirLight2.position.set(0, 0, 100);
   three.scene.add(dirLight2);
+  // const directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+  // three.scene.add( directionalLight );
   }
 
   // add a debug cube:
