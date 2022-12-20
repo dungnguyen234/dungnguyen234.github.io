@@ -3,7 +3,7 @@ const _settings = {
   
   // CONVERSES SHOES:
   // 3D models:
-  shoeRightPath: 'assets/converseShoe2.glb',
+  shoeRightPath: 'assets/converseShoe.glb',
   isModelLightMapped: true,
   occluderPath: 'assets/occluder.glb',
 
