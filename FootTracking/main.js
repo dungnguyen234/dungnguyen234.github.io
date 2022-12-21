@@ -3,7 +3,7 @@ const _settings = {
   
   // CONVERSES SHOES:
   // 3D models:
-  shoeRightPath: 'assets/nike_air_zoom_pegasus_36.glb',
+  shoeRightPath: 'assets/nikePega.glb',
   isModelLightMapped: true,
   occluderPath: 'assets/occluder.glb',
 
