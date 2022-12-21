@@ -3,12 +3,12 @@ const _settings = {
   
   // CONVERSES SHOES:
   // 3D models:
-  shoeRightPath: 'assets/nike.glb',
+  shoeRightPath: 'assets/nike_air_zoom_pegasus_36.glb',
   isModelLightMapped: true,
   occluderPath: 'assets/occluder.glb',
 
   // pose settings:
-  scale: 10,
+  scale: 1,
   translation: [0, -0.02, 0], // Z -> verical, Y+ -> front way
 
   /*
