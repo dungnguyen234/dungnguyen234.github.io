@@ -161,7 +161,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="button button1">View product detail</button>
+                <button class="button button1" onclick="viewAR()" > View in your space </button>
               </div>
               </div>
             </div>
@@ -185,7 +185,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="button button1">View product detail</button>
+                <button class="button button1" onclick="viewAR()" > View in your space </button>
               </div>
             </div>
             </div>
@@ -208,7 +208,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="button button1">View product detail</button>
+                <button class="button button1" onclick="viewAR()" > View in your space </button>
               </div>
             </div>
             </div>
@@ -231,7 +231,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="button button1">View product detail</button>
+                <button class="button button1" onclick="viewAR()" > View in your space </button>
               </div>
             </div>
             </div>
@@ -254,7 +254,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="button button1">View product detail</button>
+                <button class="button button1" onclick="viewAR()" > View in your space </button>
               </div>
             </div>
             </div>
@@ -277,7 +277,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="button button1">View product detail</button>
+                <button class="button button1" onclick="viewAR()" > View in your space </button>
               </div>
             </div>
           </div>
@@ -306,13 +306,26 @@
   <script src="libs/jquery/jquery.min.js"></script>
   <script src="libs/bootstrap/js/bootstrap.bundle.js"></script>
   <script>
-    const modelViewers = document.querySelectorAll("model-viewer");
+      function viewAR() {
 
-    modelViewers.forEach(mv => {
-        mv.addEventListener('click', () => {
-            mv.dismissPoster();
-        })
-    })
+        var selectBox = document.getElementById('div').dataset.value;;
+       // var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+       
+       
+
+        var modelViewer = document.querySelector("model-viewer")
+        const base = "https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/" + selectBox;
+        modelViewer.src = base + '.glb';
+        modelViewer.activateAR();
+
+}
+
+function activateAR_click() {
+var modelViewer = document.getElementById('model-viewer');
+modelViewer.activateAR();
+
+
+}
   </script>
 </body>
 

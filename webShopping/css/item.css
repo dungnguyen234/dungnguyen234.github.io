@@ -108,7 +108,7 @@ model-viewer {
 #ar-button {
   background-image: url(ar_icon.png);
   background-repeat: no-repeat;
-  background-size: 50px 50px;
+  background-size: 150px 150px;
   background-position: 12px 50%;
   background-color: #fff;
   position: absolute;
