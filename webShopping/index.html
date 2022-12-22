@@ -67,7 +67,8 @@
 
 <body>
      <!-- Import the component -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+     <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
   
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -148,7 +149,9 @@
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <div id="div" data-value="K300166">
-                <model-viewer alt="A 3D model of a chair" 
+                <model-viewer 
+                src="https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/K300166.glb" 
+                    alt="A 3D model of a chair" 
                     poster="assets/ar-shop/chair1.jpg" reveal="manual"
                    
                     camera-controls></model-viewer>
@@ -161,7 +164,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="button button1" onclick="viewAR()" > View in your space </button>
+                <button class="button button1" onclick="activateAR_click()" > View in your space </button>
               </div>
               </div>
             </div>
@@ -315,10 +318,12 @@
 
         var modelViewer = document.querySelector("model-viewer")
         const base = "https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/" + selectBox;
-        console.log(base);
+        //var modelViewer = document.getElementById('model-viewer');
         modelViewer.src = base + '.glb';
-       // modelViewer.activateAR();
-        activateAR_click()
+        console.log(modelViewer.src);
+
+       modelViewer.activateAR();
+        //activateAR_click();
 }
 
 function activateAR_click() {
