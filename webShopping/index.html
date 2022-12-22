@@ -34,6 +34,34 @@
           height: 200px;
           margin: 0 auto;
       }
+      
+.button {
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 8px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #2111d4;
+}
+
+.button1:hover {
+  background-color: #2111d4;
+  color: white;
+}
+
+
+
+
   </style>
 </head>
 
@@ -119,9 +147,10 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <model-viewer src="assets/ar-shop/chair1.glb" alt="A 3D model of a chair" 
+              <div id="div" data-value="K300166">
+                <model-viewer alt="A 3D model of a chair" 
                     poster="assets/ar-shop/chair1.jpg" reveal="manual"
-                    ar ar-modes="webxr scene-viewer quick-look" environment-image="neutral"
+                   
                     camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -132,17 +161,20 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="ar-button" onclick="window.app.showChair(1);"><i class="fas fa-camera"></i></button>
+                <button class="button button1">View product detail</button>
               </div>
-              
+              </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <model-viewer src="assets/ar-shop/chair2.glb" alt="A 3D model of a chair" ar 
+              <div id="div" data-value="111503">
+
+              <model-viewer  alt="A 3D model of a chair" ar 
+
                 poster="assets/ar-shop/chair2.jpg" reveal="manual"
-                ar-modes=" scene-viewer quick-look" environment-image="neutral" 
+                
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -153,14 +185,17 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="ar-button" onclick="window.app.showChair(2);"><i class="fas fa-camera"></i></button>
+                <button class="button button1">View product detail</button>
               </div>
+            </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <model-viewer src="assets/ar-shop/chair3.glb" alt="A 3D model of a chair" ar 
+              <div id="div" data-value="132024">
+
+                <model-viewer alt="A 3D model of a chair" ar 
                 poster="assets/ar-shop/chair3.jpg" reveal="manual"
                 ar-modes="scene-viewer quick-look" environment-image="neutral" 
                 camera-controls></model-viewer>
@@ -173,16 +208,19 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="ar-button" onclick="window.app.showChair(3);"><i class="fas fa-camera"></i></button>
+                <button class="button button1">View product detail</button>
               </div>
+            </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <model-viewer src="assets/ar-shop/chair4.glb" alt="A 3D model of a chair" ar 
+              <div id="div" data-value="132799">
+
+                <model-viewer  alt="A 3D model of a chair" ar 
                 poster="assets/ar-shop/chair4.jpg" reveal="manual"
-                ar-modes="scene-viewer quick-look" environment-image="neutral" 
+               
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -193,16 +231,19 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="ar-button" onclick="window.app.showChair(4);"><i class="fas fa-camera"></i></button>
+                <button class="button button1">View product detail</button>
               </div>
+            </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <model-viewer src="assets/ar-shop/chair5.glb" alt="A 3D model of a chair" ar
+              <div id="div" data-value="132943">
+
+                <model-viewer 
                 poster="assets/ar-shop/chair5.jpg" reveal="manual" 
-                ar-modes=" scene-viewer quick-look" environment-image="neutral" 
+                
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -213,16 +254,19 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="ar-button" onclick="window.app.showChair(5);"><i class="fas fa-camera"></i></button>
+                <button class="button button1">View product detail</button>
               </div>
+            </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-                <model-viewer src="assets/ar-shop/chair6.glb" alt="A 3D model of a chair" ar 
+            <div class="card h-100">             
+               <div id="div" data-value="133007">
+
+                <model-viewer  alt="A 3D model of a chair" ar 
                 poster="assets/ar-shop/chair6.jpg" reveal="manual"
-                ar-modes=" scene-viewer quick-look" environment-image="neutral" 
+                
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -233,11 +277,11 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button class="ar-button" onclick="window.app.showChair(6);"><i class="fas fa-camera"></i></button>
+                <button class="button button1">View product detail</button>
               </div>
             </div>
           </div>
-
+          </div>
         </div>
         <!-- /.row -->
 
@@ -252,9 +296,9 @@
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">
-    <div class="container">
+    <!-- <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p>
-    </div>
+    </div> -->
     <!-- /.container -->
   </footer>
 
