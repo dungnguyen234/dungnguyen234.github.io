@@ -315,9 +315,10 @@
 
         var modelViewer = document.querySelector("model-viewer")
         const base = "https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/" + selectBox;
+        console.log(base);
         modelViewer.src = base + '.glb';
-        modelViewer.activateAR();
-
+       // modelViewer.activateAR();
+        activateAR_click()
 }
 
 function activateAR_click() {
