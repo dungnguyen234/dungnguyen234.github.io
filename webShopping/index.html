@@ -132,7 +132,8 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <model-viewer id="model-viewer"  src="https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/K300166.glb" alt="A 3D model of a chair" 
+              <div id="div" data-value="K300166"></div>
+              <model-viewer id="model-viewer"  src="" alt="A 3D model of a chair" 
                     poster="assets/ar-shop/chair1.jpg" reveal="manual"
                     ar ar-modes="webxr scene-viewer quick-look" environment-image="neutral"
                     camera-controls></model-viewer>
@@ -145,7 +146,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="activateAR_click()"> View in AR </button>        
+                <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="ARClick()"> View in AR </button>        
 
               </div>
               
@@ -280,13 +281,13 @@
   <script src="libs/jquery/jquery.min.js"></script>
   <script src="libs/bootstrap/js/bootstrap.bundle.js"></script>
   <script>
-    const modelViewers = document.querySelectorAll("model-viewer");
+    // const modelViewers = document.querySelectorAll("model-viewer");
 
-    modelViewers.forEach(mv => {
-        mv.addEventListener('click', () => {
-            mv.dismissPoster();
-        })
-    })
+    // modelViewers.forEach(mv => {
+    //     mv.addEventListener('click', () => {
+    //         mv.dismissPoster();
+    //     })
+    // })
 
     function activateAR_click() {
             var modelViewer = document.getElementById('model-viewer');
@@ -294,6 +295,22 @@
             
          
         }
+
+        function ARClick() {
+
+            var select = document.getElementById("div").dataset.value;
+            // var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+
+           
+
+            var modelViewer = document.querySelector("model-viewer")
+            const base = "https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/" + select;
+            modelViewer.src = base + '.glb';
+            console.log(modelViewer.src);
+            modelViewer.activateAR();
+        }
+
   </script>
 </body>
 
