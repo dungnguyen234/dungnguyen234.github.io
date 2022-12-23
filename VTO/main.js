@@ -57,7 +57,7 @@ const ringModesCommonSettings = {
 };
 
 const wristModelCommonSettings = {
-  URL: 'assets/debug/seiko.glb',
+  URL: 'assets/debug/wristPlaceHolder.glb',
   
   scale: 1.35 * 1.462,
   offset: [0.076, -0.916, -0.504],
