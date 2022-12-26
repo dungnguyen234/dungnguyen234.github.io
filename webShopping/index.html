@@ -23,7 +23,7 @@
           height: 200px;
           margin: 0 auto;
       }
-      .btn-primary {
+      /* .btn-primary {
                 background-color: #b2073b;
                 border-color:  #b2073b;
                 
@@ -46,7 +46,7 @@
             .spinner-border-sm {
                 width : 1.1em;
                 height : 1.1em;
-            }
+            } */
   </style>
 </head>
 
@@ -82,7 +82,6 @@
     </div>
   </nav>
 
-  <!-- Page Content -->
   <div class="container">
 
     <div class="row">
@@ -109,13 +108,13 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="assets/ar-shop/banner1.jpg" alt="First slide">
+              <img class="d-block img-fluid" src="../assets/ar-shop/banner1.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="assets/ar-shop/banner2.jpg" alt="Second slide">
+              <img class="d-block img-fluid" src="../assets/ar-shop/banner2.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="assets/ar-shop/banner3.jpg" alt="Third slide">
+              <img class="d-block img-fluid" src="../assets/ar-shop/banner3.jpg" alt="Third slide">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -132,10 +131,9 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <div id="ItemName" data-value="K300166"></div>
-              <model-viewer id="model-viewer"  src="" alt="A 3D model of a chair" 
+                <model-viewer src="https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/K300166.glb" alt="A 3D model of a chair" 
                     poster="assets/ar-shop/chair1.jpg" reveal="manual"
-                    ar ar-modes=" scene-viewer quick-look" environment-image="neutral"
+                    ar ar-modes="scene-viewer quick-look" environment-image="neutral"
                     camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -146,8 +144,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="ARClick()"> <div id="button">View Product Detail</div> </button>        
-                
+                <button class="ar-button" onclick="window.app.showChair(1);"><i class="fas fa-camera"></i></button>
               </div>
               
             </div>
@@ -155,11 +152,9 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <div id="ItemName" data-value="111503"></div>
-
-              <model-viewer id="model-viewer"  src="" alt="A 3D model of a chair" ar 
+                <model-viewer src="assets/ar-shop/chair2.glb" alt="A 3D model of a chair" ar 
                 poster="assets/ar-shop/chair2.jpg" reveal="manual"
-                ar-modes=" scene-viewer quick-look" environment-image="neutral" 
+                ar-modes="scene-viewer quick-look" environment-image="neutral" 
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -170,19 +165,16 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="ARClick(ItemName)"> View in Your Space </button>        
-
+                <button class="ar-button" onclick="window.app.showChair(2);"><i class="fas fa-camera"></i></button>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <div id="ItemName" data-value="132024"></div>
-
-              <model-viewer id="model-viewer" data-value="132024" src="" alt="A 3D model of a chair" ar 
+                <model-viewer src="assets/ar-shop/chair3.glb" alt="A 3D model of a chair" ar 
                 poster="assets/ar-shop/chair3.jpg" reveal="manual"
-                ar-modes=" scene-viewer quick-look" environment-image="neutral" 
+                ar-modes="scene-viewer quick-look" environment-image="neutral" 
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -193,19 +185,16 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="ARClick(ItemName)"> View in Your Space </button>        
-
+                <button class="ar-button" onclick="window.app.showChair(3);"><i class="fas fa-camera"></i></button>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <div id="ItemName" data-value="132799"></div>
-
-              <model-viewer id="model-viewer"  src="" alt="A 3D model of a chair" ar 
+                <model-viewer src="assets/ar-shop/chair4.glb" alt="A 3D model of a chair" ar 
                 poster="assets/ar-shop/chair4.jpg" reveal="manual"
-                ar-modes=" scene-viewer quick-look" environment-image="neutral" 
+                ar-modes="scene-viewer quick-look" environment-image="neutral" 
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -216,19 +205,16 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="ARClick(ItemName)"> View in Your Space </button>        
-
+                <button class="ar-button" onclick="window.app.showChair(4);"><i class="fas fa-camera"></i></button>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <div id="ItemName" data-value="132943"></div>
-
-              <model-viewer id="model-viewer"  src="" alt="A 3D model of a chair" ar
+                <model-viewer src="assets/ar-shop/chair5.glb" alt="A 3D model of a chair" ar
                 poster="assets/ar-shop/chair5.jpg" reveal="manual" 
-                ar-modes=" scene-viewer quick-look" environment-image="neutral" 
+                ar-modes="scene-viewer quick-look" environment-image="neutral" 
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -239,19 +225,16 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="ARClick(ItemName)"> View in Your Space </button>        
-
+                <button class="ar-button" onclick="window.app.showChair(5);"><i class="fas fa-camera"></i></button>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <div id="ItemName" data-value="133007"></div>
-
-              <model-viewer id="model-viewer" src="" alt="A 3D model of a chair" ar 
+                <model-viewer src="assets/ar-shop/chair6.glb" alt="A 3D model of a chair" ar 
                 poster="assets/ar-shop/chair6.jpg" reveal="manual"
-                ar-modes=" scene-viewer quick-look" environment-image="neutral" 
+                ar-modes="scene-viewer quick-look" environment-image="neutral" 
                 camera-controls></model-viewer>
               <div class="card-body">
                 <h4 class="card-title">
@@ -262,8 +245,7 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button type="button" class="btn btn-primary btn-lg" id="my-own-custom-button" onclick="ARClick(ItemName)"> View in Your Space </button>        
-
+                <button class="ar-button" onclick="window.app.showChair(6);"><i class="fas fa-camera"></i></button>
               </div>
             </div>
           </div>
@@ -291,13 +273,13 @@
   <script src="libs/jquery/jquery.min.js"></script>
   <script src="libs/bootstrap/js/bootstrap.bundle.js"></script>
   <script>
-    // const modelViewers = document.querySelectorAll("model-viewer");
+    const modelViewers = document.querySelectorAll("model-viewer");
 
-    // modelViewers.forEach(mv => {
-    //     mv.addEventListener('click', () => {
-    //         mv.dismissPoster();
-    //     })
-    // })
+    modelViewers.forEach(mv => {
+        mv.addEventListener('click', () => {
+            mv.dismissPoster();
+        })
+    })
 
     function activateAR_click() {
             var modelViewer = document.getElementById('model-viewer');
