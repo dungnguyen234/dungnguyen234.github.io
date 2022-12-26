@@ -37,5 +37,12 @@
     </script> -->
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script>
+      // const myDataObject = JSON.parse(localStorage.getItem('objectToPass'));
+      //  console.log(JSON.parse(localStorage.getItem('objectToPass')));
+      var myData = localStorage['objectToPass'];
+      console.log(myData);
+      // localStorage.removeItem( 'objectToPass' ); 
+    </script>
   </body>
 </html>
