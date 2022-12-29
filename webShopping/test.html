@@ -128,9 +128,8 @@
         </div>
 
         <div class="row">
-          <div id="myData"></div>
 
-          
+          <ar></ar>
            
 
         </div>
@@ -168,113 +167,55 @@
             });
 
     function appendData(data) {
-            var mainContainer = document.getElementById("myData");
             const base = "https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/";
            
             for (var i = 0; i < data.length; i++) {
-              let Source = base + data[i].sku ; 
-              let modelSource = Source + ".glb";
-              console.log(modelSource);
+              let modelSource = base + data[i].sku + ".glb"; 
               let imageSource = data[i].image;
     let html = `
     <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              
-                <model-viewer src=${modelSource}
-                alt="A 3D model of a chair" 
-                    poster=${imageSource}
-                     reveal="manual"
-                    ar ar-modes="scene-viewer quick-look" 
-                    environment-image="neutral"
-
-                    camera-controls>
-                    
-                    </model-viewer>
-                   
-                    <div class="card-body">
-
-                      
-                <h4 class="card-title">
-                  
-                  <a href="#">Item </a>
+                <model-viewer src= ${modelSource}
+                 alt="A 3D model of a chair" 
+                 poster=${imageSource}
                  
+                    ar ar-modes=" scene-viewer quick-look"
+                     environment-image="neutral"
+                   xr-environment shadow-intensity="1" 
+                    camera-controls>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">
+        View in your space
+      </button>
+      
+                    </model-viewer>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Item ${i+1}</a>
                 </h4>
-                <h5>$24.99</h5>
-                
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+                <h5>$84.99</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
               </div>
-             
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-       
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
               </div>
+              
             </div>
           </div>
-         
 
     `
-              // var div = document.createElement("div");
-              // div.innerHTML =  "col-lg-4 col-md-6 mb-4";
-              // var div2 = document.createElement("div");
-              // div2.innerHTML = "card h-100";
-
-              // var modelViewer = document.createElement("model-viewer");
-
-              //   modelViewer.src = base + data[i].sku +".glb";
-              //   modelViewer.poster = data[i].image;
-
-              //   console.log(modelViewer.src);
-              //   modelViewer.reveal = "manual";
-              //   modelViewer.environment = "neutral";
-              //           // var div = document.createElement("div");
-              //           // div.innerHTML = 'Product sku : ' + data[i].sku ;
-                      // mainContainer.appendChild(div);
-                      // mainContainer.appendChild(div2);
-                      //  mainContainer.appendChild(modelViewer);
-                      //mainContainer.append(html);
-                      $('body').append(html);
+                      $('ar').append(html);
             }
         }       
-    const modelViewers = document.querySelectorAll("model-viewer");
+   
 
-    modelViewers.forEach(mv => {
-     
-        mv.addEventListener('click', () => {
-            mv.dismissPoster();
-        })
-    })
-
-    function activateAR_click() {
-            var modelViewer = document.getElementById('model-viewer');
-            modelViewer.activateAR();
-            
-         
-        }
-
-        function ARClick() {
-             var select = document.getElementById("ItemName");
-
-           // var select = document.getElementById("ItemName").dataset.value;
-            // var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-            //val = document.getElementById("model-viewer").dataset.value;
-
-
-            var modelViewer = document.querySelector("model-viewer")
-            const base = "https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/" + select;
-            const modelName  = base+'.glb';
-
-            modelViewer.src = base + '.glb';
-
-            console.log(select);
-            window.localStorage.setItem('objectToPass',select.value);
-            alert(window.localStorage.getItem("objectToPass"));
-
-            //modelViewer.activateAR();
-            window.location.href = "item.html";
-        }
+   
 
   </script>
+    <script src="script.js"></script>
+
 </body>
 
 </html>

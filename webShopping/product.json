@@ -3,39 +3,39 @@
     {
         "id": "1",
         "sku": "K300166",
-        "image" : "assets/ar-shop/chair1.jpg"
+        "image" : "assets/ar-shop/K300166.jpg"
         
     },
     {
         "id": "2",
         "sku":"111503",
-        "image" : "assets/ar-shop/chair2.jpg"
+        "image" : "assets/ar-shop/111503.jpg"
 
         
     },
     {
         "id": "3",
         "sku":"132024",
-        "image" : "assets/ar-shop/chair3.jpg"
+        "image" : "assets/ar-shop/132024.jpg"
 
     },
 	{
         "id": "4",
         "sku": "132799",
-        "image" : "assets/ar-shop/chair4.jpg"
+        "image" : "assets/ar-shop/132799.jpg"
 
         
     },
 	 {
         "id": "5",
        "sku":"132943",
-       "image" : "assets/ar-shop/chair5.jpg"
+       "image" : "assets/ar-shop/132943.jpg"
 
     },
  	{
         "id": "6",
         "sku": "133007",
-        "image" : "assets/ar-shop/chair6.jpg"
+        "image" : "assets/ar-shop/133007.jpg"
 
         
     }
