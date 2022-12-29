@@ -23,6 +23,31 @@
           height: 200px;
           margin: 0 auto;
       }
+
+       .btn-primary {
+                background-color: #b2073b;
+                border-color:  #b2073b;
+                
+                border-radius: 40px;
+            }
+            .hide 
+            {
+                display:none;
+            }
+            
+            .btnArea
+            {
+                position: absolute;
+                top : 60%;
+                left : 20%;
+                -ms-transform: translate(-50%, -90%);
+                transform: translate(-50%, -90%);
+
+            }
+            .spinner-border-sm {
+                width : 1.1em;
+                height : 1.1em;
+            }
   </style>
 </head>
 
@@ -33,7 +58,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#"><img src="assets/ar-shop/logo-nav.jpg"/> ARFurniture.com</a>
+      <a class="navbar-brand" href="#"><img src="assets/ar-shop/logo-nav.jpg"/> ImmersiveShop.com</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -174,9 +199,8 @@
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
-                <button slot="ar-button" id="ar-button">
-        View in your space
-      </button>
+
+      
               </div>
               
             </div>
@@ -188,7 +212,12 @@
         }       
    
 
-   
+        function activateAR_click() {
+            var modelViewer = document.getElementById('model-viewer');
+            modelViewer.activateAR();
+            
+         
+        }
 
   </script>
     <script src="script.js"></script>
