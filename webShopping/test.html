@@ -172,12 +172,14 @@
             const base = "https://virtualfair-silversea-media.oss-ap-southeast-1.aliyuncs.com/projects/krisshop/glb/";
            
             for (var i = 0; i < data.length; i++) {
-              let modelSource = base + data[i].sku +".glb"; 
+              let Source = base + data[i].sku ; 
+              let modelSource = Source + ".glb";
+              console.log(modelSource);
               let imageSource = data[i].image;
     let html = `
     <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <br>
+              
                 <model-viewer src=${modelSource}
                 alt="A 3D model of a chair" 
                     poster=${imageSource} reveal="manual"
@@ -186,29 +188,27 @@
                     camera-controls>
                     
                     </model-viewer>
-                    <br>
+                   
                     <div class="card-body">
 
-                      <br>
+                      
                 <h4 class="card-title">
-                  <br>
+                  
                   <a href="#">Item </a>
-                  <br>
+                 
                 </h4>
                 <h5>$24.99</h5>
-                <br>
+                
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
               </div>
-              <br>
+             
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                <button slot="ar-button" id="ar-button">
-        View in AR
-      </button>
+       
               </div>
             </div>
           </div>
-          <br>
+         
 
     `
               // var div = document.createElement("div");
