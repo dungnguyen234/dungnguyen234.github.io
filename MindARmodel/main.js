@@ -37,24 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
     dirLight2.position.set(0, 0, 100);
    scene.add(dirLight2);
 
-  //  const audioClip = await loadAudio('./assets/sounds/musicband-background.mp3');
+   const audioClip = await loadAudio('./assets/sounds/musicband-background.mp3');
 
-  //  const listener = new THREE.AudioListener();
-  //  camera.add(listener);
+   const listener = new THREE.AudioListener();
+   camera.add(listener);
 
-  //  const audio = new THREE.PositionalAudio(listener);
-  //  anchor.group.add(audio);
+   const audio = new THREE.PositionalAudio(listener);
+   anchor.group.add(audio);
 
-  //  audio.setBuffer(audioClip);
-  //  audio.setRefDistance(100);
-  //  audio.setLoop(true);
+   audio.setBuffer(audioClip);
+   audio.setRefDistance(100);
+   audio.setLoop(true);
 
-  //  anchor.onTargetFound = () => {
-  //    audio.play();
-  //  }
-  //  anchor.onTargetLost = () => {
-  //    audio.pause();
-  //  }
+   anchor.onTargetFound = () => {
+     audio.play();
+   }
+   anchor.onTargetLost = () => {
+     audio.pause();
+   }
 
 
     await mindarThree.start();
