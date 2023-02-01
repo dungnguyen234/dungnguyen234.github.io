@@ -63,10 +63,10 @@ model-viewer {
   background-position: 12px 50%;
   background-color: #fff;
   position: absolute;
-   left: 75%;
-  transform: translateX(-75%); 
+   left: 50%;
+  transform: translateX(-50%); 
   white-space: nowrap;
-  bottom : 20px;
+  bottom : 40px;
   padding: 0px 16px 0px 40px;
   font-family: Roboto Regular, Helvetica Neue, sans-serif;
   font-size: 14px;
