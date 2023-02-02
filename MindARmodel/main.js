@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
      const anchor = mindarThree.addAnchor(0);
    
-    const raccoon = await loadGLTF('./assets/models/musicband-raccoon/scene.gltf');
+    const raccoon = await loadGLTF('./assets/models/Ribs.glb');
     raccoon.scene.scale.set(0.1, 0.1, 0.1);
     raccoon.scene.position.set(0, -0.4, 0);
 
