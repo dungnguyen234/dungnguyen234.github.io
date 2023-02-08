@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Product Item</title>
+    <meta charset="utf-8">
+    
+
+    
+
+    
+    <link type="text/css" href="css/item.css" rel="stylesheet"/>
+    <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+  </head>
+  <body>
+    <button id="changeColorBtn">Change color</button>
+    <!-- <model-viewer> HTML element -->
+      <model-viewer 
+      id="myModel" 
+    src="assets/model.glb"
+     ar ar-modes="scene-viewer quick-look" 
+     camera-controls
+      environment-image="neutral" 
+      paint="material: red"
+      shadow-intensity="1">
+
+        <!-- <button slot="ar-button" id="ar-button">
+          View in your space
+      </button>
+      <div id="ar-prompt">
+          <img src="assets/ar_hand_prompt.png">
+      </div> -->
+     
+    </model-viewer>  
+    <script>
+      const modelViewer = document.querySelector("#myModel");
+const changeColorBtn = document.querySelector("#changeColorBtn");
+modelViewer.addEventListener("loaded", () => {
+  const canvas = modelViewer.shadowRoot.querySelector("canvas");
+  changeColorBtn.style.position = "absolute";
+  changeColorBtn.style.left = canvas.offsetLeft + (canvas.offsetWidth / 2) - (changeColorBtn.offsetWidth / 2) + "px";
+  changeColorBtn.style.top = canvas.offsetTop + (canvas.offsetHeight / 2) - (changeColorBtn.offsetHeight / 2) + "px";
+});
+changeColorBtn.addEventListener("click", function() {
+  const currentColor = modelViewer.getAttribute("paint");
+ 
+    modelViewer.setAttribute("paint", "material: green");
+ 
+});
+
+    </script>
+ 
+   
+    <!-- Loads <model-viewer> for browsers: -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!-- <script>
+            const colorButton = document.getElementById('color-button');
+      const model = document.getElementById('my-model');
+
+      let colorIndex = 0;
+      const colors = ['black', 'green', 'red'];
+
+      colorButton.addEventListener('click', () => {
+        console.log(colorIndex);
+        colorIndex = (colorIndex + 1) % colors.length;
+        model.setAttribute('pbr-material', `baseColor: ${colors[colorIndex]}`);
+      });
+    </script> -->
+  </body>
+</html>
