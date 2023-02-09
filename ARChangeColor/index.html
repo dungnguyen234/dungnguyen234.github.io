@@ -17,25 +17,24 @@
       <model-viewer 
       id="my-model" 
     src="assets/bus2 1k.glb"
-     ar ar-modes="scene-viewer quick-look" 
+     ar 
+     ar-modes="scene-viewer quick-look" 
      camera-controls
       environment-image="neutral" 
     
       shadow-intensity="1">
-      <div class="controls" ,="" id="color-controls">
-        <button data-color="#ff0000">Red</button>
-        <button data-color="#00ff00">Green</button>
-        <button data-color="#0000ff">Blue</button>
-      </div>
-        <button slot="ar-button" id="ar-button">
-          View in your space
-      </button>
-      <div id="ar-prompt">
-          <img src="assets/ar_hand_prompt.png">
-      </div>
+      <button slot="ar-button" id="button">Button</button>
+      
+        
+      
      
     </model-viewer>  
-   
+    <div class="controls" ,="" id="color-controls">
+      <button data-color="#ff0000">Red</button>
+      <button data-color="#00ff00">Green</button>
+      <button data-color="#0000ff">Blue</button>
+
+    </div>
     <script src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.js"></script>
     <script>
