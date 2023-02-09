@@ -13,43 +13,41 @@
     <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
   </head>
   <body>
-    <button id="changeColorBtn">Change color</button>
     <!-- <model-viewer> HTML element -->
       <model-viewer 
-      id="myModel" 
-    src="assets/111503.glb"
+      id="my-model" 
+    src="assets/bus2 1k.glb"
      ar ar-modes="scene-viewer quick-look" 
      camera-controls
       environment-image="neutral" 
-      paint="material: red"
+    
       shadow-intensity="1">
-
-        <!-- <button slot="ar-button" id="ar-button">
+      <div class="controls" ,="" id="color-controls">
+        <button data-color="#ff0000">Red</button>
+        <button data-color="#00ff00">Green</button>
+        <button data-color="#0000ff">Blue</button>
+      </div>
+        <button slot="ar-button" id="ar-button">
           View in your space
       </button>
       <div id="ar-prompt">
           <img src="assets/ar_hand_prompt.png">
-      </div> -->
+      </div>
      
     </model-viewer>  
+   
+    <script src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.js"></script>
     <script>
-      const modelViewer = document.querySelector("#myModel");
-const changeColorBtn = document.querySelector("#changeColorBtn");
-modelViewer.addEventListener("loaded", () => {
-  const canvas = modelViewer.shadowRoot.querySelector("canvas");
-  changeColorBtn.style.position = "absolute";
-  changeColorBtn.style.left = canvas.offsetLeft + (canvas.offsetWidth / 2) - (changeColorBtn.offsetWidth / 2) + "px";
-  changeColorBtn.style.top = canvas.offsetTop + (canvas.offsetHeight / 2) - (changeColorBtn.offsetHeight / 2) + "px";
-});
-changeColorBtn.addEventListener("click", function() {
-  const currentColor = modelViewer.getAttribute("paint");
- 
-    modelViewer.setAttribute("paint", "material: green");
- 
-});
+          const modelViewerColor = document.querySelector("model-viewer#my-model");
 
-    </script>
- 
+          document.querySelector('#color-controls').addEventListener('click', (event) => {
+            const colorString = event.target.dataset.color;
+            const [material] = modelViewerColor.model.materials;
+            material.pbrMetallicRoughness.setBaseColorFactor(colorString);
+          });
+
+      </script>
    
     <!-- Loads <model-viewer> for browsers: -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
