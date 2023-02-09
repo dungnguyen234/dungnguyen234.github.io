@@ -23,18 +23,18 @@
       environment-image="neutral" 
     
       shadow-intensity="1">
-      <button slot="ar-button" id="button">Button</button>
-      
+      <!-- <button slot="ar-button" id="button">Button</button>
+       -->
         
-      
+       <div class="controls" ,="" id="color-controls">
+        <button data-color="#ff0000">Red</button>
+        <button data-color="#00ff00">Green</button>
+        <button data-color="#0000ff">Blue</button>
+  
+      </div>
      
     </model-viewer>  
-    <div class="controls" ,="" id="color-controls">
-      <button data-color="#ff0000">Red</button>
-      <button data-color="#00ff00">Green</button>
-      <button data-color="#0000ff">Blue</button>
-
-    </div>
+   
     <script src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/build/three.js"></script>
     <script>
