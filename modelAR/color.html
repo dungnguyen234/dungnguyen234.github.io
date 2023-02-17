@@ -13,19 +13,21 @@
             <model-viewer id="color" camera-controls touch-action="pan-y" interaction-prompt="none" src="RobotExpressive.glb" ar alt="A 3D model of an astronaut"
               poster=""
       alt="A HP"
-      shadow-intensity="1.5"
+      shadow-intensity="1"
       environment-image="neutral"
       camera-controls
       auto-rotate ar
-      ar-modes="webxr scene-viewer quick-look">
+      ar-modes="webxr scene-viewer quick-look"
+      autoPlay
+      >
       
      
-      <!-- <button slot="ar-button" id="ar-button" >
+      <button slot="ar-button" id="ar-button" >
           View in your space
-      </button> -->
-      <div id="ar-prompt">
+      </button>
+      <!-- <div id="ar-prompt">
           <img src="ar_hand_prompt.png">
-      </div>
+      </div> -->
   <div class="controls" ,="" id="color-controls">
     <button data-color="1,0,0,1">Red</button>
     <button data-color="0,1,0,1">Green</button>
